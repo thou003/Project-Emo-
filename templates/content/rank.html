@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- 구글 폰트-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <style>
+        #base_area {
+            width: 1000px;
+            height: 800px;
+        }
+
+        input[type=checkbox], input[type=radio] { border-style: none !important }
+    </style>
+
+
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <title class>검색페이지</title>
+
+</head>
+<body style="font-family: 'Noto Sans KR', sans-serif; background-color: #FAFAFA">
+<div style="display: flex; flex-direction: column; align-items: center; width: 100%" id="base_area">
+    <div style="text-align: center">
+        <!-- 아래 스타일 수정하면 전체 페이지 크기 조절됨-->
+        <div style="padding: 10px; border: solid 1px rgba(219, 219, 219, 1); width: 800px; height: 615px; margin-top: 30px; background-color: white">
+            <!-- 아래 스타일 수정하면 체크박스 크기 조절됨, height: auto-->
+            <div style="display: inline-block; width: 440px; margin: 10px 10px; border: solid 1px dimgray; padding: 10px 10px; background-color: oldlace">
+                <div style="display: flex; flex-direction: row; margin: 20px 0">
+                    <div style="width: 80px; border-right: solid 1px gray">
+                        <b>기업별</b>
+                    </div>
+                    <div style="padding-left: 20px; text-align: left">
+                        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                            <input type="checkbox" class="btn-check" id="type1" autocomplete="off" checked="checked">
+                            <label class="btn btn-outline-secondary btn-sm" for="type1">카카오</label>
+
+                            <input type="checkbox" class="btn-check" id="type2" autocomplete="off" checked="checked">
+                            <label class="btn btn-outline-secondary btn-sm" for="type2">라인</label>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row; margin: 20px 0">
+                    <div style="width: 80px; border-right: solid 1px gray">
+                        <b>세대별</b>
+                    </div>
+                    <div style="padding-left: 20px; text-align: left">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="Generation" id="btnradio0" autocomplete="off"
+                                   checked>
+                            <label class="btn btn-outline-secondary btn-sm" for="btnradio0">전체</label>
+
+                            <input type="radio" class="btn-check" name="Generation" id="btnradio1" autocomplete="off">
+                            <label class="btn btn-outline-secondary btn-sm" for="btnradio1">10대</label>
+
+                            <input type="radio" class="btn-check" name="Generation" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-outline-secondary btn-sm" for="btnradio2">20대</label>
+
+                            <input type="radio" class="btn-check" name="Generation" id="btnradio3" autocomplete="off">
+                            <label class="btn btn-outline-secondary btn-sm" for="btnradio3">30대</label>
+
+                            <input type="radio" class="btn-check" name="Generation" id="btnradio4" autocomplete="off">
+                            <label class="btn btn-outline-secondary btn-sm" for="btnradio4">40대</label>
+
+                            <input type="radio" class="btn-check" name="Generation" id="btnradio5" autocomplete="off">
+                            <label class="btn btn-outline-secondary btn-sm" for="btnradio5">50대</label>
+
+                            <input type="radio" class="btn-check" name="Generation" id="btnradio6" autocomplete="off">
+                            <label class="btn btn-outline-secondary btn-sm" for="btnradio6">60대</label>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row; margin: 20px 0">
+                    <div style="width: 80px; border-right: solid 1px gray">
+                        <b>성별</b>
+                    </div>
+                    <div style="padding-left: 20px; justify-content: space-between;">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="gender" id="btn_gender1" autocomplete="off"
+                                   checked>
+                            <label class="btn btn-outline-secondary btn-sm" for="btn_gender1">전체</label>
+
+                            <input type="radio" class="btn-check" name="gender" id="btn_gender2" autocomplete="off">
+                            <label class="btn btn-outline-secondary btn-sm" for="btn_gender2">남성</label>
+
+                            <input type="radio" class="btn-check" name="gender" id="btn_gender3" autocomplete="off">
+                            <label class="btn btn-outline-secondary btn-sm" for="btn_gender3">여성</label>
+                        </div>
+                    </div>
+                    <div style="margin-left: 117px">
+                        <button type="button" class="btn btn-primary btn-sm">검색하기</button>
+                    </div>
+                </div>
+
+
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: center">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <button class="btn btn-outline btn-sm" style="color: blue; border-style: none">인기순</button>
+                    <button class="btn btn-outline btn-sm" style="color: blue">신규순</button>
+                    <button class="btn btn-outline btn-sm" style="color: blue">구매순</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+-->
+</body>
+</html>

@@ -55,7 +55,7 @@ class Member(models.Model):
     type = models.CharField(db_column='Type', max_length=45)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'member'
 
 

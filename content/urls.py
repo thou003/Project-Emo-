@@ -1,4 +1,4 @@
-from .views import Rank
+from .views import Rank, Main
 from django.urls import path
 
 urlpatterns = [

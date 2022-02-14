@@ -7,3 +7,7 @@ from rest_framework.views import APIView
 class Rank(APIView):
     def get(self, request):
         return render(request, "content/rank.html")
+
+class Main(APIView):
+    def get(self, request):
+        return render(request, "emoshop/main.html")

@@ -10,34 +10,35 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- 구글 폰트-->
- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-        <!-- jquery-->
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <!-- jquery-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 
     <title>회원가입</title>
 </head>
 
 
-
 <body style="font-family: 'Noto Sans KR', sans-serif; background-color: #FAFAFA">
 <!-- 네비게이션 바-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
-    <div style="min-width: 500px; display: flex; flex-direction: row; justify-content: space-between; flex-wrap: nowrap" class="container-fluid">
-     <div style="width: 180px">
-          &nbsp;
-      </div>
-      <div style="width: 200px; text-align: center">
-        <a class="navbar-brand" href="#">이모샵</a>
-      </div>
-      <div style="width: 170px">
-        <form style="display: flex" class="d-flex">
-          <input style="width: 100px" class="form-control me-2" style="width: 100px" type="search" aria-label="Search">
-          <button class="btn btn-success" type="submit">검색</button>
-        </form>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div style="min-width: 500px; display: flex; flex-direction: row; justify-content: space-between; flex-wrap: nowrap"
+         class="container-fluid">
+        <div style="width: 180px">
+            &nbsp;
+        </div>
+        <div style="width: 200px; text-align: center">
+            <a class="navbar-brand" href="/main">이모샵</a>
+        </div>
+        <div style="width: 170px">
+            <form style="display: flex" class="d-flex">
+                <input style="width: 100px" class="form-control me-2" style="width: 100px" type="search"
+                       aria-label="Search">
+                <button class="btn btn-success" type="submit">검색</button>
+            </form>
+        </div>
     </div>
 </nav>
 
@@ -46,49 +47,52 @@
     <div style="padding: 20px; text-align: center; border: solid 1px rgba(219, 219, 219, 1); width: 300px; height: 515px; margin-top: 30px; background-color: white">
         <div>
             <div style="margin-bottom: 15px">
-                <label id="type">판매회원<input style="margin: 0 5px" name="member_type" type="radio"/></label>
-                <label id="type">일반회원<input style="margin: 0 5px" name="member_type" type="radio"/></label>
+                <label id="type">일반회원<input style="margin: 0 5px" id="member_type1" name="member_type" type="radio"
+                                            checked/></label>
+                <label id="type">판매회원<input style="margin: 0 5px" id="member_type2" name="member_type"
+                                            type="radio"/></label>
             </div>
         </div>
         <div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" style="font-size: 14px; height: 24px" id="input_id"
+                <input type="text" class="form-control" style="font-size: 15px; height: 24px" id="input_id"
                        placeholder="name@example.com">
                 <label for="input_name" style="font-size: 14px; padding: 4px 10px">아이디</label>
             </div>
         </div>
         <div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" style="font-size: 14px; height: 24px" id="input_password"
+                <input type="password" class="form-control" style="font-size: 15px; height: 24px" id="input_password"
                        placeholder="Password">
                 <label for="input_password" style="font-size: 14px; padding: 4px 10px">패스워드</label>
             </div>
         </div>
-        <div style="display: flex; flex-direction: row; justify-content: space-between; height: 50px; ">
+        <div style="display: flex; flex-direction: row; justify-content: space-between;">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" style="font-size: 14px; height: 24px; width: 150px"
+                <input type="text" class="form-control" style="font-size: 15px; height: 24px; width: 160px"
                        id="input_name"
                        placeholder="name@example.com">
                 <label for="input_name" style="font-size: 14px; padding: 4px 10px">이름</label>
             </div>
-            <div style="" class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="gender" id="btn_gender2" autocomplete="off">
-                <label class="btn btn-outline-secondary btn-sm" for="btn_gender2">남성</label>
+            <div style="padding-bottom: 16px; height: 50px; width: 80px" class="btn-group" role="group"
+                 aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="gender" id="input_gender1" autocomplete="off">
+                <label class="btn btn-outline-secondary btn-sm" for="input_gender1">남</label>
 
-                <input type="radio" class="btn-check" name="gender" id="btn_gender3" autocomplete="off">
-                <label class="btn btn-outline-secondary btn-sm" for="btn_gender3">여성</label>
+                <input type="radio" class="btn-check" name="gender" id="input_gender2" autocomplete="off">
+                <label class="btn btn-outline-secondary btn-sm" for="input_gender2">여</label>
             </div>
         </div>
         <div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" style="font-size: 14px; height: 24px" id="input_nickname"
+                <input type="text" class="form-control" style="font-size: 15px; height: 24px" id="input_nickname"
                        placeholder="name@example.com">
                 <label for="input_nickname" style="font-size: 14px; padding: 4px 10px">닉네임</label>
             </div>
         </div>
         <div>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" style="font-size: 14px; height: 24px" id="input_email"
+                <input type="email" class="form-control" style="font-size: 15px; height: 24px" id="input_email"
                        placeholder="name@example.com">
                 <label for="input_email" style="font-size: 14px; padding: 4px 10px">이메일 주소</label>
             </div>
@@ -107,52 +111,158 @@
                 <label for="input_nickname" style="font-size: 14px; padding: 4px 10px">전화번호</label>
             </div>
         </div>
-        <button id="join_button" class="btn btn-primary" style="width: 100%">가입</button>
+        <button id="join_button" class="btn btn-primary" style="margin-top: 20px; width: 100%">가입</button>
     </div>
-    <div style="padding: 20px; text-align: center; border: solid 1px rgba(219, 219, 219, 1); width: 300px; height: 70px; margin-top: 30px; background-color: white">
+    <div style="padding: 15px; text-align: center; border: solid 1px rgba(219, 219, 219, 1); width: 300px; height: 60px; margin-top: 30px; background-color: white">
         <div> 계정이 있으신가요?<a href="/user/login">로그인</a></div>
     </div>
 </div>
 
 
-<!-- Optional JavaScript; choose one of the two! -->
 <script>
+    function checks() {
+        var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+        var getCheck = RegExp(/^[a-zA-Z0-9]{4,12}$/);
+        var getName = RegExp(/^[가-힣]+$/);
+        {#var getTel = RegExp(/^[0-9]/);#}
+
+        <!-- 아이디 공백-->
+        if ($("#input_id").val() == "") {
+            alert("아이디를 입력해주세요");
+            $("#input_id").focus();
+            return false;
+        }
+        <!-- 패스워드 공백-->
+        if ($("#input_password").val() == "") {
+            alert("패스워드를 입력해주세요");
+            $("#input_password").focus();
+            return false;
+        }
+        <!-- 아이디, 패스워드 같음-->
+        if ($("#input_id").val() == $("#input_password").val()) {
+            alert("아이디와 비밀번호가 같습니다");
+            $("#input_password").val("");
+            $("#input_password").focus();
+            return false;
+        }
+        <!-- 비밀번호 유효성-->
+        if (!getCheck.test($("#input_password").val())) {
+            alert("비밀번호 양식에 맞게 입력해주세요");
+            $("#input_password").val("");
+            $("#input_password").focus();
+            return false;
+        } else if (($("#input_password").val()).length < 8) {
+            alert("비밀번호 양식(8~20자 이내)에 맞게 입력해주세요");
+            $("#input_password").val("");
+            $("#input_password").focus();
+            return false;
+        }
+
+        <!-- 이름 공백-->
+        if ($("#input_name").val() == "") {
+            alert("이름을 입력해주세요");
+            $("#input_name").focus();
+            return false;
+        }
+        <!-- 이름 유효성 검사-->
+        if (!getName.test($("#input_name").val())) {
+            alert("이름형식에 맞게 입력해주세요")
+            $("#input_name").val("");
+            $("#input_name").focus();
+            return false;
+        }
+        <!-- 성별 체크 유효성 검사-->
+        if(!($('#input_gender1')[0].checked ==true || $('#input_gender2')[0].checked ==true)){
+            alert("성별을 선택하세요")
+            return false;
+        }
+
+        <!--이메일 공백 검사-->
+        if ($("#input_email").val() == "") {
+            alert("이메일을 입력해주세요");
+            $("#input_email").focus();
+            return false;
+        }
+        <!-- 이메일 유효성-->
+        if (!getMail.test($("#input_email").val())) {
+            alert("이메일형식에 맞게 입력해주세요")
+            $("#input_email").val("");
+            $("#input_email").focus();
+            return false;
+        }
+
+        <!-- 생일-->
+        if ($("#input_birth").val() == "") {
+            alert("생년월일을 입력해주세요");
+            $("#input_birth").focus();
+            return false;
+        }
+
+        <!-- 전화번호 공백-->
+        if ($("#input_tel").val() == "") {
+            alert("전화번호를 입력해주세요");
+            $("#input_tel").focus();
+            return false;
+        }
+        return true;
+    }
+
+
+    <!-- 검사하고 회원가입-->
     $('#join_button').click(function () {
-
-        let email = $('#input_email').val();
-        let password = $('#input_password').val();
-        let nickname = $('#input_nickname').val();
-        let name = $('#input_name').val();
-        let birth = $('#input_birth').val();
-        let phonenumber = $('#input_phonenumber').val();
-
-        console.log(email, password, nickname, name);
-
-         $.ajax({
-            url: "/user/join/",
-            data: {
-                email : email,
-                password : password,
-                nickname : nickname,
-                name : name,
-                birth : birth,
-                phonenumber : phonenumber
-            },
-            method: "POST",
-            success: function (data) {
-                console.log("성공");
-                alert("회원가입 성공했습니다. 로그인해주세요.");
-                location.replace('/user/login');
-            },
-            error: function (request, status, error) {
-                console.log("에러");
-            },
-            complete: function () {
-                console.log("완료");
+        if (checks()) {
+            let member_type;
+            let gender;
+            if ($('#member_type1').checked ==true) {
+                member_type = "일반";
+            } else {
+                member_type = "판매";
             }
-        });
+            if ($('#input_gender1').checked ==true) {
+                gender = "남";
+            } else {
+                gender = "여";
+            }
+            let email = $('#input_email').val();
+            let password = $('#input_password').val();
+            let nickname = $('#input_nickname').val();
+            let name = $('#input_name').val();
+            let birth = $('#input_birth').val();
+            let phonenumber = $('#input_phonenumber').val();
+
+            console.log(gender);
+
+            $.ajax({
+                url: "/user/join/",
+                data: {
+                    member_type: member_type,
+                    gender: gender,
+                    email: email,
+                    password: password,
+                    nickname: nickname,
+                    name: name,
+                    birth: birth,
+                    phonenumber: phonenumber
+                },
+                method: "POST",
+                success: function (data) {
+                    console.log("성공");
+                    alert("회원가입 성공했습니다. 로그인해주세요.");
+                    location.replace('/user/login');
+                },
+                error: function (request, status, error) {
+                    console.log("에러");
+                },
+                complete: function () {
+                    console.log("완료");
+                }
+            });
+        } else {
+            return false;
+        }
     });
 </script>
+<!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

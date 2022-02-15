@@ -15,15 +15,15 @@ class Join(APIView):
 
     def post(self, request):
         # TODO 회원가입
-        email = request.data.get('email', None)
-        # id = request.data.get('id', None)
-        name = request.data.get('name', None)
-        password = request.data.get('password', None)
-        birth = request.data.get('birth', None)
-        phonenumber = request.data.get('phonenumber', None)
-        gender = request.data.get('gender', None)
-        member_type = request.data.get('member_type', None)
-        id = request.data.get('id', None)
+        email = request.data.get('email')
+        nickname = request.data.get('nickname')
+        name = request.data.get('name')
+        password = request.data.get('password')
+        birth = request.data.get('birth')
+        phonenumber = request.data.get('phonenumber')
+        gender = request.data.get('gender')
+        member_type = request.data.get('member_type')
+        id = request.data.get('id')
 
         Member.objects.create(email=email,
                             sex=gender,
@@ -32,7 +32,8 @@ class Join(APIView):
                             birth=birth,
                             phonenumber=phonenumber,
                             type=member_type,
-                            id=id)
+                            id=id,
+                            nickname=nickname)
 
         return Response(status=200)
 
@@ -60,4 +61,41 @@ class Login(APIView):
 
 class Mypage(APIView):
     def get(self, request):
-        return render(request, "user/mypage.html")
+        id = request.session.get('id', None)
+
+        if id is None:
+            return render(request, "user/login.html")
+
+        user = Member.objects.filter(id=id).first()
+
+        if user is None:
+            return render(request, "user/login.html")
+
+        return render(request, 'user/mypage.html', context=dict(user=user))
+
+class Edituser(APIView):
+    def get(self, request):
+        id = request.session.get('id', None)
+        user = Member.objects.filter(id=id).first()
+
+        return render(request, 'user/edituser.html', context=dict(user=user))
+
+class Updateuser(APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        nickname = request.data.get('nickname')
+        password = request.data.get('password')
+        phonenumber = request.data.get('phonenumber')
+        id = request.session.get('id')
+
+        user = Member.objects.filter(id=id).first()
+
+        user.password = password
+        user.nickname = nickname
+        user.phonenumber = phonenumber
+        user.email = email
+        user.save()
+
+        return Response(status=200)
+
+

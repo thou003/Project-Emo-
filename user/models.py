@@ -54,6 +54,7 @@ class Member(models.Model):
     phonenumber = models.CharField(db_column='Phonenumber', max_length=11)  # Field name made lowercase.
     type = models.CharField(db_column='Type', max_length=45)  # Field name made lowercase.
     id = models.CharField(db_column='Id', max_length=45)  # Field name made lowercase.
+    nickname = models.CharField(db_column='Nickname', max_length=45)  # Field name made lowercase.
 
     class Meta:
         managed = True

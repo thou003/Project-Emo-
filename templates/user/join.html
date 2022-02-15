@@ -229,12 +229,14 @@
             let name = $('#input_name').val();
             let birth = $('#input_birth').val();
             let phonenumber = $('#input_phonenumber').val();
+            let id = $('#input_id').val();
 
             console.log(gender);
 
             $.ajax({
                 url: "/user/join/",
                 data: {
+                    id: id,
                     member_type: member_type,
                     gender: gender,
                     email: email,

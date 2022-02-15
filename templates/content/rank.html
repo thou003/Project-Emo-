@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
+   <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,13 +14,145 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
+    <!-- google icon-->
+    <link
+            href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+            rel="stylesheet">
+
+    <!-- jquery-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <!-- 구글 폰트-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+
+      <!--  네비게이션바 CSS-->
     <style>
+        .site_head {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 112;
+            min-width: 280px;
+            background-color: #FAFAFA;
+            height: auto;
+            z-index:1;
+        }
+
+        .menu_navbar {
+            min-width: 560px;
+            height: 50px;
+            background-color: #FAFAFA;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .up_search {
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding: 20px 0;
+            text-align: center;
+            top: 0;
+            z-index: -1;
+            transition: 0.5s;
+        }
+
+        .inner_search {
+            display: fixed;
+            height: 116px;
+            padding: 30px 0;
+            box-sizing: border-box;
+            background-color: #FAFAFA;
+            text-align: center;
+            box-shadow: 0 3px 3px rgba(0,0,0,.1);
+            transition: 0.7s;
+        }
+
+        .menu_list {
+            position: relative;
+            display: block;
+            height: 50px;
+            font-size: 16px;
+            line-height: 54px;
+            color: gray;
+        }
+
+        ul {
+          background-color: #FAFAFA;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style-type: none;
+            text-align: center;
+            align-items: center;
+            padding-right: 32px;
+        }
+        li {
+            width: 80px;
+            margin: 0 20px;
+            float: left;
+        }
+
+        #main_search {
+            max-width: 500px;
+            width: calc(100% - 128px);
+            border: 0 none;
+            padding: 13px 24px 13px 20px;
+            font-size: 18px;
+            line-height: 28px;
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        #main_search:focus {
+          border: solid 2px black;
+        }
+
+
         #base_area {
             width: 1000px;
             height: 800px;
+            transition: 0.5s;
         }
 
-        input[type=checkbox], input[type=radio] { border-style: none !important }
+        #page_area {
+            margin-top: 117px;
+            padding: 10px;
+            /* border: solid 1px rgba(219, 219, 219, 1);  */
+            width: 800px;
+            height: 615px;
+            background-color: white;
+            transition: 0.5s;
+            z-index: -6;
+        }
+        #table_area {
+            display: inline-block;
+            height: 180px;
+            width: 640px;
+            margin: 10px 10px;
+            margin-right: 10px;
+            border: solid 1px rgba(0,0,0,.1);
+            padding: 10px 10px;
+            background-color: #FFF;
+        }
+
+        .range_data {
+            border: none;
+            background-color: #FFF;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input:focus {
+            display: inline;
+            outline: none;
+            z-index: -3;
+        }
     </style>
 
 
@@ -28,93 +160,154 @@
     <title class>검색페이지</title>
 
 </head>
-<body style="font-family: 'Noto Sans KR', sans-serif; background-color: #FAFAFA">
+<body style="font-family: 'Noto Sans KR', sans-serif; background-color: #FFF">
+  <!--사이트 헤드&네비게이션 메뉴 & 검색창-->
+<div style="background-color: white;" class="site_head">
+    <nav  class="navbar navbar-expand-lg navbar-light bg-light">
+        <div style="min-width: 500px; height: 50px; display: flex; flex-direction: row; justify-content: space-between; flex-wrap: nowrap"
+             class="container-fluid">
+            <div style="width: 180px">
+                &nbsp;
+            </div>
+            <div style="width: 200px; text-align: center">
+                <a class="navbar-brand" href="/main"><b>이모샵</b></a>
+            </div>
+            <div style="display: flex; flex-direction: row; width: 180px; justify-content: right">
+                <div style="margin: 0 10px">
+                    <span id="search_btn" style="cursor: pointer; width: 36px" class="material-icons-outlined">search</span>
+                </div>
+                <div>
+                    <span style="cursor: pointer; width: 36px;" class="material-icons-outlined"><a style="text-decoration: none; color: black" href="/user/mypage">account_circle</a></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <nav class="menu_navbar">
+            <ul style="margin: auto">
+                <li style="border-bottom: solid 2px black" class="menu_list"><a style="color:black; text-decoration: none"; href="/main">홈</a></li>
+                <li class="menu_list"><a style="color:black; text-decoration: none"; href="/content/rank">인기</a></li>
+                <li class="menu_list"><a style="color:black; text-decoration: none"; href="/main">신규</a></li>
+                <li class="menu_list"><a style="color:black; text-decoration: none"; href="/main">추천</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="open_close" class="up_search">
+        <input id="main_search" type="text" placeholder="이모티콘을 검색해보세요!">
+    </div>
+</div>
+
+
 <div style="display: flex; flex-direction: column; align-items: center; width: 100%" id="base_area">
     <div style="text-align: center">
         <!-- 아래 스타일 수정하면 전체 페이지 크기 조절됨-->
-        <div style="padding: 10px; border: solid 1px rgba(219, 219, 219, 1); width: 800px; height: 615px; margin-top: 30px; background-color: white">
+        <div id="page_area">
             <!-- 아래 스타일 수정하면 체크박스 크기 조절됨, height: auto-->
-            <div style="display: inline-block; width: 440px; margin: 10px 10px; border: solid 1px dimgray; padding: 10px 10px; background-color: oldlace">
+            <div id="table_area" >
                 <div style="display: flex; flex-direction: row; margin: 20px 0">
-                    <div style="width: 80px; border-right: solid 1px gray">
+                    <div style="font-size: 15px; width: 70px; border-right: solid 1px gray">
                         <b>기업별</b>
                     </div>
                     <div style="padding-left: 20px; text-align: left">
-                        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                            <input type="checkbox" class="btn-check" id="type1" autocomplete="off" checked="checked">
-                            <label class="btn btn-outline-secondary btn-sm" for="type1">카카오</label>
-
-                            <input type="checkbox" class="btn-check" id="type2" autocomplete="off" checked="checked">
-                            <label class="btn btn-outline-secondary btn-sm" for="type2">라인</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                            <label class="form-check-label" for="inlineCheckbox1">라인</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" checked>
+                            <label class="form-check-label" for="inlineCheckbox2">카카오</label>
                         </div>
                     </div>
                 </div>
                 <div style="display: flex; flex-direction: row; margin: 20px 0">
-                    <div style="width: 80px; border-right: solid 1px gray">
+                    <div style="font-size: 15px; width: 70px; border-right: solid 1px gray">
                         <b>세대별</b>
                     </div>
-                    <div style="padding-left: 20px; text-align: left">
-                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="Generation" id="btnradio0" autocomplete="off"
-                                   checked>
-                            <label class="btn btn-outline-secondary btn-sm" for="btnradio0">전체</label>
-
-                            <input type="radio" class="btn-check" name="Generation" id="btnradio1" autocomplete="off">
-                            <label class="btn btn-outline-secondary btn-sm" for="btnradio1">10대</label>
-
-                            <input type="radio" class="btn-check" name="Generation" id="btnradio2" autocomplete="off">
-                            <label class="btn btn-outline-secondary btn-sm" for="btnradio2">20대</label>
-
-                            <input type="radio" class="btn-check" name="Generation" id="btnradio3" autocomplete="off">
-                            <label class="btn btn-outline-secondary btn-sm" for="btnradio3">30대</label>
-
-                            <input type="radio" class="btn-check" name="Generation" id="btnradio4" autocomplete="off">
-                            <label class="btn btn-outline-secondary btn-sm" for="btnradio4">40대</label>
-
-                            <input type="radio" class="btn-check" name="Generation" id="btnradio5" autocomplete="off">
-                            <label class="btn btn-outline-secondary btn-sm" for="btnradio5">50대</label>
-
-                            <input type="radio" class="btn-check" name="Generation" id="btnradio6" autocomplete="off">
-                            <label class="btn btn-outline-secondary btn-sm" for="btnradio6">60대</label>
-                        </div>
+                    <div style="margin-left: 20px">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate0" value="generate_all" checked>
+                        <label class="form-check-label" for="check_generate0">전체</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate1" value="generate_10" checked>
+                        <label class="form-check-label" for="check_generate1">10대</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate2" value="generate_20" checked>
+                        <label class="form-check-label" for="check_generate2">20대</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate3" value="generate_30" checked>
+                        <label class="form-check-label" for="check_generate3">30대</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate4" value="generate_40" checked>
+                        <label class="form-check-label" for="check_generate4">40대</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate5" value="generate_50" checked>
+                        <label class="form-check-label" for="check_generate5">50대</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate6" value="generate_60" checked>
+                        <label class="form-check-label" for="check_generate6">60대</label>
                     </div>
                 </div>
+                </div>
                 <div style="display: flex; flex-direction: row; margin: 20px 0">
-                    <div style="width: 80px; border-right: solid 1px gray">
+                    <div style="font-size: 15px; width: 70px; border-right: solid 1px gray">
                         <b>성별</b>
                     </div>
                     <div style="padding-left: 20px; justify-content: space-between;">
-                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="gender" id="btn_gender1" autocomplete="off"
-                                   checked>
-                            <label class="btn btn-outline-secondary btn-sm" for="btn_gender1">전체</label>
-
-                            <input type="radio" class="btn-check" name="gender" id="btn_gender2" autocomplete="off">
-                            <label class="btn btn-outline-secondary btn-sm" for="btn_gender2">남성</label>
-
-                            <input type="radio" class="btn-check" name="gender" id="btn_gender3" autocomplete="off">
-                            <label class="btn btn-outline-secondary btn-sm" for="btn_gender3">여성</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="check_gender1" value="gender_all" checked>
+                            <label class="form-check-label" for="check_gender1">전체</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="check_gender2" value="gender_male" checked>
+                            <label class="form-check-label" for="check_gender2">남성</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="check_gender3" value="gender_female" checked>
+                            <label class="form-check-label" for="check_gender3">여성</label>
                         </div>
                     </div>
-                    <div style="margin-left: 117px">
-                        <button type="button" class="btn btn-primary btn-sm">검색하기</button>
-                    </div>
+                    <div style="margin-left: 240px">
                 </div>
 
-
             </div>
-            <div style="display: flex; flex-direction: row; justify-content: center">
+        </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between">
+                <div style="width: 105px;">
+
+                </div>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <button class="btn btn-outline btn-sm" style="color: blue; border-style: none">인기순</button>
-                    <button class="btn btn-outline btn-sm" style="color: blue">신규순</button>
-                    <button class="btn btn-outline btn-sm" style="color: blue">구매순</button>
+                    <button class="range_data">인기순</button>
+                    <button class="range_data">신규순</button>
+                    <button class="range_data">구매순</button>
+                </div>
+                <div style="margin-right: 69px; margin-left: 10px">
+                <button type="button" class="btn btn-primary btn-sm">검색</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Optional JavaScript; choose one of the two! -->
+<script>
+    $(function () {
+        $('#search_btn').click(function () {
 
+            if ($('#open_close').hasClass('up_search')==true){
+                $('.up_search').attr('class', 'inner_search');
+                $('#page_area').css('margin', '240px');
+            } else {
+                $('.inner_search').attr('class', 'up_search');
+                $('#page_area').css('margin', '117px');
+            }
+        }); //document ready function
+    });
+</script>
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

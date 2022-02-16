@@ -83,7 +83,6 @@
         }
 
         .inner_search {
-            display: fixed;
             height: 116px;
             padding: 30px 0;
             box-sizing: border-box;
@@ -142,7 +141,6 @@
         }
 
         #page_area {
-            margin-top: 117px;
             padding: 10px;
             /* border: solid 1px rgba(219, 219, 219, 1);  */
             width: 800px;
@@ -150,6 +148,10 @@
             background-color: white;
             transition: 0.5s;
             z-index: -6;
+            margin: 117px auto;
+            text-align: center;
+            padding: 20px 20px;
+
         }
         #table_area {
             display: inline-block;
@@ -181,8 +183,9 @@
 
 
 
-<body style="font-family: 'Noto Sans KR', sans-serif; background-color: #FAFAFA">
-  <!--사이트 헤드&네비게이션 메뉴 & 검색창-->
+<body style="display: flex; justify-content: center; font-family: 'Noto Sans KR', sans-serif; background-color: #FAFAFA">
+
+<!--사이트 헤드&네비게이션 메뉴 & 검색창-->
 <div style="background-color: white;" class="site_head">
     <nav  class="navbar navbar-expand-lg navbar-light bg-light">
         <div style="min-width: 500px; height: 50px; display: flex; flex-direction: row; justify-content: space-between; flex-wrap: nowrap"
@@ -217,11 +220,9 @@
         <input id="main_search" type="text" placeholder="이모티콘을 검색해보세요!">
     </div>
 </div>
-
-
-<div style="display: flex; flex-direction: column; align-items: center; width: 100%">
-    <div id="page_area" style="padding: 25px 20px; text-align: center; border: solid 1px rgba(219, 219, 219, 1); width: 800px; background-color: white">
-        <div style="text-align: left">
+<div id="base_area" style="display: block;">
+    <div id="page_area" style="border: solid 1px rgba(219, 219, 219, 1); width: 800px; background-color: white">
+        <div>
             <div style="margin: 20px 0">
                 <div style="text-align: center"><h4>오늘도 이모샵을 방문해주셔서 감사합니다.</h4></div>
             </div>
@@ -230,27 +231,27 @@
                     <h4>마이페이지</h4>
                 </div>
                 <div style="text-align: right; margin-right: 10px">
-                    <button type="button" class="btn btn-outline-primary" onclick = "location.href = '/user/login'">개인정보수정</button>
+                    <button type="button" class="btn btn-outline-primary" onclick = "location.href = '/user/edituser'">개인정보수정</button>
                 </div>
             </div>
-            <div style="border-top: solid 1px gray; margin: 10px 10px;">
+            <div style="border-top: solid 1px gray; margin: 10px 10px; text-align: center; ">
                 <div style="display: flex; flex-direction: row; margin: 10px 0">
                     <div style="width: 100px; border-right: solid 1px lightgray;">
                         이름
                     </div>
-                    <div style="margin-left: 20px">이름 불러올곳</div>
+                    <div style="margin-left: 20px">{{ user.name }}</div>
                 </div>
                 <div style="display: flex; flex-direction: row; margin: 10px 0">
                     <div style="width: 100px; border-right: solid 1px lightgray;">
                         닉네임
                     </div>
-                    <div style="margin-left: 20px">닉네임 불러올곳</div>
+                    <div style="margin-left: 20px">{{ user.nickname }}</div>
                 </div>
                 <div style="display: flex; flex-direction: row; margin: 10px 0">
                     <div style="width: 100px; border-right: solid 1px lightgray;">
                         이메일
                     </div>
-                    <div style="margin-left: 20px">이메일 불러올곳</div>
+                    <div style="margin-left: 20px">{{ user.email }}</div>
                 </div>
             </div>
         </div>
@@ -337,10 +338,10 @@
 
             if ($('#open_close').hasClass('up_search')==true){
                 $('.up_search').attr('class', 'inner_search');
-                $('#page_area').css('margin', '233px');
+                $('#page_area').css('margin-top', '233px');
             } else {
                 $('.inner_search').attr('class', 'up_search');
-                $('#page_area').css('margin', '117px');
+                $('#page_area').css('margin-top', '117px');
             }
         }); //document ready function
     });

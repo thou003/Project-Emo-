@@ -36,12 +36,16 @@ class EmoticonOk(models.Model):
 
 
 class Likes(models.Model):
-    name = models.CharField(max_length=45, blank=True, null=True)
-    title = models.CharField(max_length=45, blank=True, null=True)
+    idnum = models.CharField(db_column='idNum', primary_key=True, max_length=45)  # Field name made lowercase.
+    title = models.CharField(max_length=45)
+    id = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'likes'
+
+
+
 
 
 class Member(models.Model):
@@ -76,11 +80,12 @@ class Refund(models.Model):
 
 
 class Sell(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=45, blank=True, null=True)
+    idNum = models.IntegerField(primary_key=True)
     date = models.DateField(blank=True, null=True)
     title = models.CharField(max_length=45, blank=True, null=True)
+    id = models.CharField(max_length=45)
+
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'sell'

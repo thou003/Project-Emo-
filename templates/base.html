@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-   <!-- Required meta tags -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,26 +10,50 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- 구글 폰트-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
     <!-- google icon-->
     <link
-            href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-            rel="stylesheet">
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
 
     <!-- jquery-->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- Bootstrap icon-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="#">
 
-    <!-- 구글 폰트-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-
-
-      <!--  네비게이션바 CSS-->
     <style>
+        .modal_overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(1.5px);
+            -webkit-backdrop-filter: blur(1.5px);
+        }
+
+        .modal_window {
+            background: white;
+            backdrop-filter: blur(13.5px);
+            -webkit-backdrop-filter: blur(13.5px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            width: 300px;
+            height: 200px;
+            position: relative;
+            padding-left: 10px;
+            padding-top: 10px;
+            align-content: center;
+        }
         .site_head {
             position: fixed;
             left: 0;
@@ -115,19 +139,22 @@
 
         #base_area {
             width: 1000px;
-            height: 800px;
+            height: auto;
             transition: 0.5s;
         }
 
         #page_area {
-            margin-top: 117px;
             padding: 10px;
-            /* border: solid 1px rgba(219, 219, 219, 1);  */
+            border: solid 1px rgba(219, 219, 219, 1);
             width: 800px;
-            height: 615px;
+            height: auto;
             background-color: white;
             transition: 0.5s;
             z-index: -6;
+            margin: 117px auto;
+            text-align: center;
+            padding: 20px 20px;
+
         }
         #table_area {
             display: inline-block;
@@ -152,15 +179,19 @@
             outline: none;
             z-index: -3;
         }
+        .dropdown-item {
+            width: 150%;
+        }
     </style>
 
-
-    <link href="style.css" rel="stylesheet" type="text/css"/>
-    <title class>검색페이지</title>
-
+    <title>이모샵</title>
 </head>
-<body style="font-family: 'Noto Sans KR', sans-serif; background-color: #FFF">
-  <!--사이트 헤드&네비게이션 메뉴 & 검색창-->
+
+
+
+<body style="display: flex; justify-content: center; font-family: 'Noto Sans KR', sans-serif; background-color: #FAFAFA">
+
+<!--사이트 헤드&네비게이션 메뉴 & 검색창-->
 <div style="background-color: white;" class="site_head">
     <nav  class="navbar navbar-expand-lg navbar-light bg-light">
         <div style="min-width: 500px; height: 50px; display: flex; flex-direction: row; justify-content: space-between; flex-wrap: nowrap"
@@ -172,11 +203,21 @@
                 <a class="navbar-brand" href="/main"><b>이모샵</b></a>
             </div>
             <div style="display: flex; flex-direction: row; width: 180px; justify-content: right">
-                <div style="margin: 0 10px">
-                    <span id="search_btn" style="cursor: pointer; width: 36px" class="material-icons-outlined">search</span>
+                <div style="margin: 10px 0 10px 10px">
+                    <span id="search_btn" style="cursor: pointer; width: 36px"
+                          class="material-icons-outlined"><i class="bi bi-search"></i></span>
                 </div>
-                <div>
-                    <span style="cursor: pointer; width: 36px;" class="material-icons-outlined"><a style="text-decoration: none; color: black" href="/user/mypage">account_circle</a></span>
+                <div class="dropdown">
+                    <a class="btn btn-secondary-outline btn-lg dropdown-toggle" href="/user/mypage" role="button" id="dropdownMenuLink"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="/user/mypage">마이페이지</a></li>
+                        <li><a class="dropdown-item" href="#">판매자페이지</a></li>
+                        <li><a class="dropdown-item" href="{% url 'user:logout' %}">로그아웃</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -184,10 +225,11 @@
     <div>
         <nav class="menu_navbar">
             <ul style="margin: auto">
-                <li style="border-bottom: solid 2px black" class="menu_list"><a style="color:black; text-decoration: none"; href="/main">홈</a></li>
-                <li class="menu_list"><a style="color:black; text-decoration: none"; href="/content/rank">인기</a></li>
-                <li class="menu_list"><a style="color:black; text-decoration: none"; href="/main">신규</a></li>
-                <li class="menu_list"><a style="color:black; text-decoration: none"; href="/main">추천</a></li>
+                <li style="border-bottom: solid 2px black" class="menu_list"><a
+                        style="color:black; text-decoration: none" ; href="/main">홈</a></li>
+                <li class="menu_list"><a style="color:black; text-decoration: none" ; href="/content/rank">인기</a></li>
+                <li class="menu_list"><a style="color:black; text-decoration: none" ; href="/main">신규</a></li>
+                <li class="menu_list"><a style="color:black; text-decoration: none" ; href="/main">추천</a></li>
             </ul>
         </nav>
     </div>
@@ -195,9 +237,7 @@
         <input id="main_search" type="text" placeholder="이모티콘을 검색해보세요!">
     </div>
 </div>
-
-
-  <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
 {% block content %}
 {% endblock %}
 <!-- 기본 템플릿 안에 삽입될 내용 End-->
@@ -205,12 +245,12 @@
     $(function () {
         $('#search_btn').click(function () {
 
-            if ($('#open_close').hasClass('up_search')==true){
+            if ($('#open_close').hasClass('up_search') == true) {
                 $('.up_search').attr('class', 'inner_search');
-                $('#page_area').css('margin', '240px');
+                $('#page_area').css('margin-top', '233px');
             } else {
                 $('.inner_search').attr('class', 'up_search');
-                $('#page_area').css('margin', '117px');
+                $('#page_area').css('margin-top', '117px');
             }
         }); //document ready function
     });

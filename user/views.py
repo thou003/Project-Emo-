@@ -1,10 +1,12 @@
 import os
 
+from django.contrib.auth import logout
 from django.contrib.auth.hashers import make_password
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
 from rest_framework.response import Response
-
-from .models import Member
+from .models import Member, Sell, Likes
 # Create your views here.
 from rest_framework.views import APIView
 
@@ -67,11 +69,15 @@ class Mypage(APIView):
             return render(request, "user/login.html")
 
         user = Member.objects.filter(id=id).first()
+        purchases = Sell.objects.filter(id=id)
+        likes = Likes.objects.filter(id=id)
+
+        context = {"purchases": purchases, "user": user, "likes": likes}
 
         if user is None:
             return render(request, "user/login.html")
 
-        return render(request, 'user/mypage.html', context=dict(user=user))
+        return render(request, 'user/mypage.html', context=context)
 
 class Edituser(APIView):
     def get(self, request):
@@ -99,3 +105,10 @@ class Updateuser(APIView):
         return Response(status=200)
 
 
+def deleteuser(request):
+    id = request.session.get('id', None)
+    user = Member.objects.get(id=id)
+    user.delete()
+    logout(request)
+
+    return render(request, "emoshop/main.html")

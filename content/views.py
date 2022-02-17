@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import emoticon
+from .models import Emoticon
 # Create your views here.
 from rest_framework.views import APIView
 
@@ -16,9 +16,7 @@ class Main(APIView):
         return render(request, "emoshop/main.html")
 
 class emoticon(APIView):
-
     def get(self, request):
-
-        emoticons = emoticon.objects.filter(service=kakao)
-
+        emoticons = Emoticon.objects.filter(service='kakao')
+        context = {'emoticons': emoticons}
         return render(request, "content/rank.html", context=context)

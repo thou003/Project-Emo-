@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class emoticon(models.Model):
+class Emoticon(models.Model):
     service = models.CharField(max_length=45)
     title = models.CharField(max_length=45, blank=True, null=True)
     artist = models.CharField(max_length=20, blank=True, null=True)

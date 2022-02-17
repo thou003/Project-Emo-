@@ -154,8 +154,6 @@
         }
     </style>
 
-
-    <link href="style.css" rel="stylesheet" type="text/css"/>
     <title class>검색페이지</title>
 
 </head>
@@ -292,6 +290,48 @@
         </div>
     </div>
 </div>
+
+{% if emoticons %}
+    {% for emoticon in emoticons %}
+        <table width = 700>
+            <tr>
+            <td rowspan = 3 width = 50>
+            <span class="txt_num num_highlight">
+
+                {{ emoticon.id }}
+
+            </span>
+        </td>
+        <td width = 400>
+            <span class="txt_tit">{{ emoticon.title }}</span>
+        </td>
+        <td rowspan = 3>
+            <a class="link_double double_img">
+            <div class="area_doubleemoticon">
+                <img src="{{ emoticon.url }}" class="img_emot img_default" width = 150 height = 150>
+            </div>
+            </a>
+        </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="txt_author">{{ emoticon.artist }}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="txt_tit">
+                <button id="swapHeart" class="btn btn-default swap">
+                    <span class="glyphicon glyphicon-heart-empty"></span>
+                </button></span>
+            </td>
+        </tr>
+        </table>
+    {% endfor %}
+{% else %}
+    아무것도 없음
+{% endif %}
+
 <!-- Optional JavaScript; choose one of the two! -->
 <script>
     $(function () {

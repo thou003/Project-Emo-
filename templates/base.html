@@ -121,7 +121,7 @@
             float: left;
         }
 
-        #main_search {
+        input {
             max-width: 500px;
             width: calc(100% - 128px);
             border: 0 none;
@@ -146,7 +146,8 @@
         #page_area {
             padding: 10px;
             border: solid 1px rgba(219, 219, 219, 1);
-            width: 800px;
+            min-width: 992px;
+            width: auto;
             height: auto;
             background-color: white;
             transition: 0.5s;
@@ -212,7 +213,6 @@
                        data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
                     </a>
-
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
                         <li><a class="dropdown-item" href="/user/mypage">마이페이지</a></li>
                         <li><a class="dropdown-item" href="#">판매자페이지</a></li>
@@ -234,7 +234,10 @@
         </nav>
     </div>
     <div id="open_close" class="up_search">
-        <input id="main_search" type="text" placeholder="이모티콘을 검색해보세요!">
+        <form action="/search/search/" method="post"> {% csrf_token %}
+            {{ form.as_table }}
+            <input style="width: 50px" type="submit" value="검색" class="btn btn-primary btn-sm">
+        </form>
     </div>
 </div>
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->

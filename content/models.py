@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Emoticon(models.Model):
-    service = models.CharField(max_length=45)
+    service = models.CharField(max_length=45, null=True)
     title = models.CharField(max_length=45, blank=True, null=True)
     artist = models.CharField(max_length=20, blank=True, null=True)
     img = models.CharField(max_length=500, blank=True, null=True)

@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Emoticon(models.Model):
     service = models.CharField(max_length=45)
-    title = models.CharField(max_length=45, blank=True, null=True)
+    title = models.CharField(max_length=45, blank=True, null=True, unique=True)
     artist = models.CharField(max_length=20, blank=True, null=True)
     img = models.CharField(max_length=500, blank=True, null=True)
     url = models.CharField(max_length=500, blank=True, null=True)
@@ -11,41 +11,19 @@ class Emoticon(models.Model):
     tag = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'emoticon'
-
-
-class EmoticonDetail(models.Model):
-    url = models.CharField(max_length=1000, blank=True, null=True)
-    name = models.CharField(max_length=1000, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'emoticon_detail'
-
-
-class EmoticonOk(models.Model):
-    title = models.CharField(max_length=45, blank=True, null=True)
-    artist = models.CharField(max_length=45, blank=True, null=True)
-    date = models.DateField(blank=True, null=True)
-    canceldate = models.DateField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'emoticon_ok'
 
 
 class Likes(models.Model):
     idnum = models.CharField(db_column='idNum', primary_key=True, max_length=45)  # Field name made lowercase.
     title = models.CharField(max_length=45)
-    id = models.CharField(max_length=45)
+    id = models.CharField(max_length=45, null=True)
+        # emoticon = models.ForeignKey(Emoticon, on_delete=models.CASCADE, related_name='emoticon')
 
     class Meta:
         managed = True
         db_table = 'likes'
-
-
-
 
 
 class Member(models.Model):
@@ -57,8 +35,8 @@ class Member(models.Model):
     birth = models.DateField(db_column='Birth')  # Field name made lowercase.
     phonenumber = models.CharField(db_column='Phonenumber', max_length=11)  # Field name made lowercase.
     type = models.CharField(db_column='Type', max_length=45)  # Field name made lowercase.
-    id = models.CharField(db_column='Id', max_length=45)  # Field name made lowercase.
-    nickname = models.CharField(db_column='Nickname', max_length=45)  # Field name made lowercase.
+    id = models.CharField(db_column='Id', max_length=45, null=True, unique=True)  # Field name made lowercase.
+    nickname = models.CharField(db_column='Nickname', null=True, max_length=45)  # Field name made lowercase.
 
     class Meta:
         managed = True
@@ -80,10 +58,10 @@ class Refund(models.Model):
 
 
 class Sell(models.Model):
-    idNum = models.IntegerField(primary_key=True)
+    idNum = models.AutoField(primary_key=True)
     date = models.DateField(blank=True, null=True)
     title = models.CharField(max_length=45, blank=True, null=True)
-    id = models.CharField(max_length=45)
+    id = models.CharField(max_length=45, null=True)
 
 
     class Meta:

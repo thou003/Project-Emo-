@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <style>
+        @font-face {
+            font-family: notokr-regular;
+            src: url(https://t1.kakaocdn.net/estoreweb/fonts/notokr-regular.woff2) format("woff2"), url(https://t1.kakaocdn.net/estoreweb/fonts/notokr-regular.woff) format("woff");
+            font-style: normal;
+            font-weight: 400
+        }
+
+        @font-face {
+            font-family: notokr-bold;
+            src: url(https://t1.kakaocdn.net/estoreweb/fonts/notokr-bold.woff2) format("woff2"), url(https://t1.kakaocdn.net/estoreweb/fonts/notokr-bold.woff) format("woff");
+            font-style: normal;
+            font-weight: 600
+        }
+
+        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, textarea, p, blockquote, th, td, input, select, button {
+            margin: 0;
+            padding: 0
+        }
+
+        fieldset, img {
+            border: 0 none
+        }
+
+        dl, ul, ol, menu, li {
+            list-style: none
+        }
+
+        blockquote, q {
+            quotes: none
+        }
+
+        blockquote:before, blockquote:after, q:before, q:after {
+            content: "";
+            content: none
+        }
+
+        input, select, textarea, button {
+            vertical-align: middle
+        }
+
+        label > .ico_comm {
+            cursor: pointer
+        }
+
+        input::-ms-clear {
+            display: none
+        }
+
+        button {
+            border: 0 none;
+            background-color: transparent;
+            cursor: pointer
+        }
+
+        body {
+            background: #fff;
+            -webkit-text-size-adjust: none
+        }
+
+        body, th, td, input, select, textarea, button {
+            font-size: 12px;
+            line-height: 1.5;
+            font-family: notokr-regular, "Apple SD Gothic Neo", sans-serif;
+            color: #191919
+        }
+
+        a {
+            color: #191919;
+            text-decoration: none
+        }
+
+        a:active, a:hover {
+            text-decoration: none
+        }
+
+        address, caption, cite, code, dfn, em, var {
+            font-style: normal;
+            font-weight: normal
+        }
+
+        img {
+            vertical-align: top
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-size: inherit
+        }
+
+        abbr[title] {
+            text-decoration: none
+        }
+
+        input[type=text], input[type=password], input[type=submit], input[type=search], input[type=tel], input[type=email], html input[type=button], input[type=reset] {
+            -webkit-appearance: none;
+            border-radius: 0
+        }
+
+
+
+        strong {
+            font-weight: normal
+        }
+
+        img, a {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none
+        }
+
+
+        @media (max-width: 767px) {
+            .btn_g {
+                border-radius: 0;
+                line-height: 46px
+            }
+
+            .btn_m {
+                border-radius: 6px
+            }
+
+            .btn_s:hover {
+                background-color: #f5f5f5
+            }
+
+            .btn_gift {
+                background-color: #191919;
+                color: #fee500
+            }
+
+            .btn_gift:disabled {
+                border-left: 1px solid rgba(0, 0, 0, .08);
+                background-color: #ccc;
+                color: #fff
+            }
+        }
+
+        .ico_comm {
+            display: inline-block;
+            overflow: hidden;
+            font-size: 1px;
+            line-height: 0;
+            color: transparent;
+            vertical-align: top;
+            background: url(https://t1.kakaocdn.net/estoreweb/images/20210728172518/ico_comm_201125.png) no-repeat;
+            -webkit-background-size: 830px 230px;
+            background-size: 830px 230px
+        }
+
+        .item_sent .ico_send {
+            width: 25px;
+            height: 26px;
+            background-position: -780px 0px
+        }
+
+
+        {#<!--인기이모티콘 옆버튼-->#}
+        .ico_stylemore {
+            width: 10px;
+            height: 15px;
+            background-position: -160px -50px
+        }
+
+        @media (max-width: 767px) {
+            .head_order .cont_pcweb .dim_layer {
+                display: block
+            }
+
+            .cont_pcweb .wrap_friend {
+                min-width: 400px
+            }
+
+            .cont_pcweb .order_layer {
+                width: 400px;
+                max-width: inherit
+            }
+
+            .cont_pcweb .order_layer .layer_head {
+                display: block
+            }
+
+            .cont_pcweb .order_layer .layer_body {
+                height: 100%;
+                padding: 70px 0 90px
+            }
+
+            .cont_pcweb .order_layer .area_products {
+                padding-top: 0px
+            }
+
+            .cont_pcweb .order_layer .area_products .cont_thumb {
+                width: calc(100% - 92px)
+            }
+
+            .cont_pcweb .order_layer .area_products .wrap_img {
+                width: 88px
+            }
+
+            .cont_pcweb .order_layer .area_products .thumb_img {
+                width: 88px;
+                height: 88px
+            }
+
+            .cont_pcweb .order_layer .gift_layer .inner_body {
+                max-height: 676px
+            }
+
+            .cont_pcweb .order_layer .layer_foot {
+                position: absolute;
+                margin-bottom: 0px
+            }
+
+            .cont_pcweb .order_layer .layer_foot .wrap_btn {
+                padding: 20px 24px
+            }
+
+            .cont_pcweb .order_layer .layer_foot .btn_g {
+                border-radius: 6px
+            }
+
+            .cont_pcweb .order_layer .layer_foot .btn_g:disabled:hover {
+                background-color: #f5f5f5
+            }
+
+            .cont_pcweb .order_layer .box_order {
+                width: 400px;
+                padding: 0 28px
+            }
+
+            .cont_pcweb .order_layer .box_coupon .txt_opt:hover {
+                border: 1px solid rgba(0, 0, 0, .24)
+            }
+
+            .cont_pcweb .order_layer .box_coupon .opt_open .box_opt {
+                display: block
+            }
+
+            .cont_pcweb .inp_check:not(:checked) + .lab_agree:hover .ico_orderagree {
+                background-position: -670px -70px
+            }
+
+            .cont_pcweb .friend_layer {
+                margin-bottom: 0
+            }
+
+            .cont_pcweb .friend_layer .layer_body {
+                padding: 70px 0 90px
+            }
+
+            .cont_pcweb .friend_layer .search_gift {
+                position: relative;
+                top: 0;
+                z-index: 10
+            }
+
+            .cont_pcweb .friend_layer .search_gift .btn_search {
+                display: block
+            }
+
+            .cont_pcweb .friend_layer .search_gift .friend_search {
+                padding: 0 28px 10px
+            }
+
+            .cont_pcweb .friend_layer .list_friend .lab_g:hover .ico_radio {
+                background-position: -100px -50px
+            }
+
+            .cont_pcweb .friend_layer .list_friend .lab_g:hover .txt_name {
+                font-family: "notokr-bold", sans-serif;
+                text-decoration: underline
+            }
+
+            .cont_pcweb .friend_layer .layer_foot {
+                position: absolute
+            }
+
+            .cont_pcweb .friend_layer .layer_foot .wrap_btn {
+                padding: 20px 24px
+            }
+
+            .cont_pcweb .friend_layer .layer_foot .btn_g {
+                border-radius: 6px;
+                font-size: 15px
+            }
+
+            .cont_pcweb .list_friend {
+                margin: 0 28px
+            }
+
+            .cont_pcweb .list_friend .inp_g:checked + .lab_g:hover .ico_radio {
+                background-position: -140px -50px
+            }
+
+            .cont_pcweb .emoticon_layer .layer_head {
+                display: block
+            }
+
+            .cont_pcweb .emoticon_layer .inner_body {
+                padding-bottom: 0
+            }
+
+            .cont_pcweb .emoticon_layer .layer_foot .btn_g:hover {
+                background-color: #f9dc00
+            }
+
+            .cont_pcweb .emoticon_layer .layer_foot .btn_g:hover .wrap_thumb:after {
+                background-image: url(https://t1.kakaocdn.net/estoreweb/images/20210728172518/profile_mask28_btnhover.svg)
+            }
+
+            .cont_pcweb .emoticon_layer .layer_foot .btn_g:disabled:hover {
+                background-color: #f5f5f5
+            }
+
+            .cont_pcweb .emoticon_layer .layer_foot .btn_g:disabled:hover .wrap_thumb:after {
+                background-image: url(https://t1.kakaocdn.net/estoreweb/images/20210728172518/profile_mask28_btndisabled.svg)
+            }
+
+            .cont_pcweb .completed_layer .inner_body {
+                display: block;
+                width: auto;
+                max-height: initial;
+                height: auto;
+                padding: 0;
+                margin-bottom: 0px
+            }
+
+            .cont_pcweb .completed_layer .box_order {
+                display: block
+            }
+
+            .cont_pcweb .completed_layer .img_completed {
+                width: 124px
+            }
+
+            .cont_pcweb .completed_layer .tit_completed {
+                font-size: 18px;
+                line-height: 28px
+            }
+
+            .cont_pcweb .completed_layer .desc_completed {
+                padding: 0 45px;
+                font-size: 13px;
+                line-height: 20px
+            }
+
+            .cont_pcweb .area_style .list_style .lab_g:hover {
+                cursor: pointer
+            }
+
+            .cont_pcweb .area_style .list_style .lab_g:hover .wrap_theme:after {
+                display: block
+            }
+
+            .cont_pcweb .area_style .list_style .lab_g:hover .ico_emoradio {
+                display: block
+            }
+
+            .cont_pcweb .area_goods {
+                flex-direction: initial
+            }
+
+            .cont_pcweb .area_goods .wrap_dear {
+                position: absolute;
+                bottom: 20px;
+                left: 30px;
+                right: 20px;
+                margin-top: 0px;
+                padding-left: 0px
+            }
+
+            .cont_pcweb .area_goods .cont_goods {
+                width: 142px;
+                padding: 31px 22px
+            }
+
+            .cont_pcweb .area_goods .cont_goods .dim_layer {
+                display: none
+            }
+
+            .cont_pcweb .area_goods .cont_goods .wrap_goods {
+                position: absolute;
+                top: auto;
+                bottom: auto;
+                z-index: 10;
+                min-width: initial;
+                margin-top: 10px
+            }
+
+            .cont_pcweb .area_goods .cont_goods .wrap_goods .list_goods .unit_goods .link_thumb {
+                width: 88px;
+                height: 88px
+            }
+
+            .cont_pcweb .area_goods .cont_goods .wrap_goods .list_goods .unit_goods .thumb_img {
+                width: 88px;
+                height: 88px
+            }
+
+            .cont_pcweb .area_goods .cont_goods .wrap_goods .area_items {
+                height: 184px
+            }
+
+            .cont_pcweb .area_goods .wrap_message .tf_message {
+                width: auto;
+                height: 72px
+            }
+
+            .cont_pcweb .area_goods .cont_message {
+                padding: 32px 10px 14px 20px;
+                border-bottom-left-radius: 0px;
+                border-top-right-radius: 10px
+            }
+
+            .cont_pcweb .area_goods .cont_message:after {
+                width: 16px;
+                height: 18px;
+                top: auto;
+                left: 0;
+                right: auto;
+                background-image: url(https://t1.kakaocdn.net/estoreweb/images/20210728172518/ico_comm_201125.png)
+            }
+
+            .cont_pcweb .search_gift .btn_remove:hover .ico_remove {
+                background-position: -160px -20px
+            }
+
+            .cont_pcweb .wrap_empty .area_empty {
+                height: 100%
+            }
+
+            .cont_pcweb .wrap_empty .area_empty .img_empty {
+                width: 124px;
+                height: 124px
+            }
+
+            .cont_pcweb .wrap_empty .area_empty .tit_empty {
+                font-size: 18px;
+                line-height: 28px
+            }
+
+            .cont_pcweb .wrap_empty .area_empty .desc_empty {
+                font-size: 13px;
+                line-height: 20px
+            }
+
+            .cont_pcweb .wrap_empty .area_empty .btn_refresh:hover {
+                background-color: rgba(0, 0, 0, .06)
+            }
+        }
+
+        .box_style {
+            width: 100%;
+            max-width: 1024px;
+            margin: auto;
+            padding: 20px 25px 0px;
+            box-sizing: border-box
+        }
+
+        .box_style:last-child {
+            margin-bottom: 20px
+        }
+
+        .box_style .link_tit {
+            padding: 0 15px;
+            margin: 24px 0 5px;
+            display: inline-block
+        }
+
+        .box_style .link_tit .tit_style {
+            margin-right: 8px;
+            font-family: "notokr-bold", sans-serif;
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: normal
+        }
+
+        .box_style .link_tit .ico_stylemore {
+            margin-top: 9px
+        }
+
+        .box_style .list_style {
+            position: relative;
+            overflow: hidden;
+            padding: 12px 15px 30px
+        }
+
+        .box_style .list_style:after {
+            position: absolute;
+            bottom: 0;
+            display: block;
+            content: "";
+            width: calc(100% - 30px);
+            height: 1px;
+            background-color: rgba(0, 0, 0, .04)
+        }
+
+        .box_style .list_style li {
+            float: left;
+            padding-left: 40px;
+            border-radius: 10px
+        }
+
+        .box_style .list_style li:first-child {
+            padding-left: 0
+        }
+
+        .box_style .list_style .link_style {
+            display: inline-block;
+            width: 206px;
+            padding: 20px 23px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            min-height: 245px
+        }
+
+        .box_style .list_style .link_style:hover {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .12)
+        }
+
+        .box_style .list_linkstyle {
+            overflow: hidden
+        }
+
+        .box_style .list_linkstyle li {
+            float: left;
+            width: 50%;
+            margin-left: 16px;
+            margin-top: 14px;
+            padding: 0;
+            width: 72px;
+            height: 72px
+        }
+
+        .box_style .list_linkstyle li:nth-child(odd) {
+            margin-left: 0
+        }
+
+        .box_style .txt_hash {
+            display: inline-block;
+            padding: 0 12px 0;
+            border-radius: 19px;
+            font-family: "notokr-bold", sans-serif;
+            font-size: 13px;
+            line-height: 32px;
+            color: #fff
+        }
+
+        .box_style .img_linkstyle {
+            width: 100%;
+            height: 100%
+        }
+
+        @media (max-width: 1023px) {
+            .area_newtab .btn_grpshare {
+                display: none
+            }
+
+            .box_style .list_style .link_style:hover {
+                box-shadow: 0 0 0 transparent
+            }
+
+            .box_style .list_style li {
+                padding-left: 32px
+            }
+
+            .box_style .list_style li:nth-child(4n) {
+                display: none
+            }
+
+            .box_style .list_style {
+                display: table;
+                table-layout: fixed;
+                padding: 10px 34px 20px 14px
+            }
+
+            .box_style .list_style > li {
+                display: table-cell;
+                float: none;
+                padding-left: 10px;
+                vertical-align: top
+            }
+
+            .box_style .list_style > li:last-child {
+                display: table-cell
+            }
+
+            .box_style .list_style .link_style {
+                width: 182px;
+                padding: 16px 20px;
+                min-height: 214px
+            }
+
+            .box_style .list_style:after {
+                display: none
+            }
+
+
+            .area_style .list_style {
+                margin-top: 16px;
+                text-align: center
+            }
+
+            .area_style .list_style li {
+                display: inline-block;
+                width: 28px;
+                margin-right: 8px;
+                vertical-align: top
+            }
+
+            .area_style .list_style .inp_g:checked + .lab_g {
+                border-radius: 50%;
+                box-sizing: border-box;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, .06)
+            }
+
+            .area_style .list_style .inp_g:checked + .lab_g .wrap_theme:after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, .5);
+                border-radius: 50%;
+                border: 1px solid #fff;
+                box-sizing: border-box;
+                content: ""
+            }
+
+            .area_style .list_style .inp_g:checked + .lab_g .ico_emoradio {
+                position: absolute;
+                top: 8px;
+                left: 5px;
+                display: block;
+                width: 17px;
+                height: 12px;
+                background-position: -730px -60px
+            }
+
+            .area_style .list_style .lab_g {
+                position: relative;
+                display: block;
+                width: 28px;
+                height: 28px
+            }
+
+            .area_style .list_style .lab_g:hover {
+                cursor: pointer
+            }
+
+            .area_style .list_style .lab_g:hover .wrap_theme:after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, .5);
+                border-radius: 50%;
+                border: 1px solid #fff;
+                box-sizing: border-box;
+                content: ""
+            }
+
+            .area_style .list_style .lab_g:hover .ico_emoradio {
+                position: absolute;
+                top: 8px;
+                left: 5px;
+                display: block;
+                width: 17px;
+                height: 12px;
+                background-position: -730px -60px
+            }
+
+            .area_style .list_style .wrap_theme {
+                position: relative;
+                display: block;
+                height: 100%;
+                border-radius: 50%
+            }
+
+            .area_style .list_style .wrap_theme .img_theme {
+                width: 100%;
+                border-radius: 50%
+            }
+
+            .area_style .list_style .lab_g:hover {
+                cursor: initial
+            }
+
+            .area_style .list_style .lab_g:hover .wrap_theme:after {
+                display: none
+            }
+
+            .area_style .list_style .lab_g:hover .ico_emoradio {
+                display: none
+            }
+        }
+
+    </style>
+    <!--슬라이드-->
+    <style>
+        /* 리셋 CSS */
+        * {
+            box-sizing: border-box;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        /* 슬라이드 Style */
+        .slidebox {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .slidebox {
+            text-align: center;
+        }
+
+        .slidebox .slidelist {
+            white-space: nowrap;
+            font-size: 0;
+            overflow: hidden;
+        }
+
+        .slidebox .slidelist .slideitem {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+            transition: all 1s;
+        }
+
+        .slidebox .slidelist .slideitem > a {
+            display: block;
+            width: auto;
+            position: relative;
+        }
+
+        .slidebox .slidelist .slideitem > a img {
+            max-width: 1000%;
+            height: 210px;
+            margin: 0 auto;
+            margin-top: 0px;
+            margin-right: auto;
+            margin-bottom: 0px;
+            margin-left: auto;
+            padding: 0;
+            width: 950px;
+        }
+
+        .slidebox .slidelist .slideitem > a label {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .slidebox .slidelist .slideitem > a label.prev {
+            left: 20px;
+            background: rgba(255, 253, 255, 0.623) url('./img/left-arrow.png') center center / 50% no-repeat;
+        }
+
+        .slidebox .slidelist .slideitem > a label.next {
+            right: 20px;
+            background: rgb(247, 245, 245) url('%ED%81%AC%EA%B2%8Csale.png') center center / 50% no-repeat;
+        }
+
+
+        [name="slide"] {
+            display: none;
+        }
+
+        #slide01:checked ~ .slidelist .slideitem {
+            transform: translateX(0);
+            animation: slide01 10s infinite;
+        }
+
+        #slide02:checked ~ .slidelist .slideitem {
+            transform: translateX(-100%);
+            animation: slide02 10s infinite;
+        }
+
+        @keyframes slide01 {
+            0% {
+                left: 0%;
+            }
+            49% {
+                left: 0%;
+            }
+            50% {
+                left: -100%
+            }
+            99% {
+                left: -100%;
+            }
+            100% {
+                left: 0;
+            }
+        }
+
+        @keyframes slide02 {
+            0% {
+                left: 0%;
+            }
+            49% {
+                left: 0%;
+            }
+            50% {
+                left: 100;
+            }
+            99% {
+                left: 100;
+            }
+            100% {
+                left: 0%;
+            }
+        }
+
+
+    </style>
+
+<body>
+<div class="slidebox">
+    <input type="radio" name="slide" id="slide01" checked="">
+    <input type="radio" name="slide" id="slide02">
+    <ul class="slidelist">
+        <li class="slideitem">
+            <a>
+                <label for="slide02" class="prev"></label>
+                <img src="come.png">
+                <label for="slide02" class="next"></label>
+            </a>
+        </li>
+        <li class="slideitem">
+            <a>
+                <label for="slide01" class="prev"></label>
+                <img src="select.png">
+                <label for="slide01" class="next"></label>
+            </a>
+        </li>
+    </ul>
+
+</div>
+<div class="box_style"><a class="link_tit" href="/style/categories/14"><strong class="tit_style">#인기 이모티콘
+    시리즈</strong><span class="ico_comm ico_stylemore">더보기</span></a>
+    <ul class="list_style">
+        <li><a class="link_style" href="/style/groups/3018" style="background-color: rgb(255, 243, 243);"><span
+                class="txt_hash" style="background-color: rgb(255, 134, 134);">#댜갸_시리즈</span>
+            <ul class="list_linkstyle">
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/0db899a2893ab6d7112b4e958e194a5b617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/0fbae0da845c6c65e13cab74053d6078617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/779007922efd8fa3681c30dae2d79457617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/c927dc7294daf48ef199949b2663e6fd617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+            </ul>
+        </a></li>
+        <li><a class="link_style" href="/style/groups/3016" style="background-color: rgb(255, 243, 243);"><span
+                class="txt_hash" style="background-color: rgb(255, 134, 134);">#망상토끼</span>
+            <ul class="list_linkstyle">
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/de35c871466a3fd4023e4ff39fae0a03617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/ea6d402ae98f3e73e14939e2e7843fbc617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/e879ddc5b88be2640b2d728191594f6a617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/59d0e3d8457cee2613aa067069a37249617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+            </ul>
+        </a></li>
+        <li><a class="link_style" href="/style/groups/3015" style="background-color: rgb(255, 243, 243);"><span
+                class="txt_hash" style="background-color: rgb(255, 134, 134);">#슈야</span>
+            <ul class="list_linkstyle">
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/2441aa90eafe7f4b904618cda69baf29617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/ff1a96d1072271ff7d1c6369f0fb3cd0617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/1b32a89e59ac27e79a64f2bfb84172a7617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/6a70741a786959b4aa9970991eb7dfd8617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+            </ul>
+        </a></li>
+        <li><a class="link_style" href="/style/groups/3019" style="background-color: rgb(255, 243, 243);"><span
+                class="txt_hash" style="background-color: rgb(255, 134, 134);">#그냥그런토끼</span>
+            <ul class="list_linkstyle">
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/4cea89aea3bd5b4e5fa36064405217d8617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/67bd885cabe14b1629e4e1ab2f898321617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/ee3d1b70def8cd1c9ce077c85946b963617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+                <li><img class="img_linkstyle"
+                         src="https://item.kakaocdn.net/do/a7a36c6ff6cd4fd21911cb1adfbbbb42617ea012db208c18f6e83b1a90a7baa7"
+                         alt=""></li>
+            </ul>
+        </a></li>
+    </ul>
+</div>
+
+
+</body>
+</html>

@@ -2,18 +2,19 @@ import os
 
 from django.contrib.auth import logout
 from django.contrib.auth.hashers import make_password
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.views.generic import DeleteView
 from rest_framework.response import Response
-from .models import Member, Sell, Likes
+from .models import Member, Sell, Likes, Emoticon
 # Create your views here.
 from rest_framework.views import APIView
 
 
 class Join(APIView):
     def get(self, request):
-        return render(request, "user/join.html")
+        return render(request, "user/join.html") # Join 들어오면 화면으로 여길 보여줘라!!
 
     def post(self, request):
         # TODO 회원가입
@@ -69,10 +70,18 @@ class Mypage(APIView):
             return render(request, "user/login.html")
 
         user = Member.objects.filter(id=id).first()
-        purchases = Sell.objects.filter(id=id)
-        likes = Likes.objects.filter(id=id)
 
-        context = {"purchases": purchases, "user": user, "likes": likes}
+        # ------구매내역 시작
+        purchases = Sell.objects.filter(id=id).values('title')
+        purchase_emoticons = Emoticon.objects.filter(title__in=purchases)
+        # ------구매내역 끝
+
+        # ------좋아요 시작
+        likes = Likes.objects.filter(id=id).values('title')
+        emoticons = Emoticon.objects.filter(title__in=likes)
+        # ------좋아요 끝
+
+        context = {'purchases': purchase_emoticons, 'emoticons': emoticons , 'user': user}
 
         if user is None:
             return render(request, "user/login.html")
@@ -112,3 +121,20 @@ def deleteuser(request):
     logout(request)
 
     return render(request, "emoshop/main.html")
+
+class Purchase(APIView):
+    def post(self, request):
+        id = request.session.get('id', None)
+        likes = Likes.objects.filter(id=id)
+
+        for like in likes:
+            Sell.objects.create(
+                id=id,
+                title=like.title,
+                date=timezone.now(),
+            )
+
+        likes.delete()
+
+        return redirect('user:mypage')
+

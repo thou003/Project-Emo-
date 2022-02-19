@@ -46,13 +46,12 @@
                 <div class="row" style="margin-top: 30px">
                 {% if purchases %}
                     {% for purchase in purchases %}
-                    <div class="col-sm-4 ms-4">
+                    <div class="col-sm-3 ms-6">
                         <div class="card" style="width: 13rem;">
-                            <img src="..." class="card-img-top" alt="...">
+                            <a href="/main"><img src="{{purchase.img}}" class="card-img-top" alt="..."></a>
                             <div class="card-body">
-                                <h5 class="card-title">{{ purchase.title }}</h5>
-                                <p class="card-text"></p>
-                                <a href="#" class="btn btn-primary">상세보기</a>
+                                <h6 class="card-title">{{ purchase.title }}</h6>
+                                <div style="color: gray; font-size: 14px">{{ purchase.artist }}</div>
                             </div>
                         </div>
                     </div>
@@ -67,32 +66,38 @@
             </div>
 
             <!-- 찜 내역 for문으로 불러오기-->
-            <div style="text-align: left; margin: 40px 0 0 10px; border-bottom: solid 1px gray">
-                <h4>좋아요</h4>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 40px 0 0 10px; border-bottom: solid 1px gray">
+                <div style="padding-top: 10px; font-size: 25px">좋아요</div>
+                <form action="{% url 'user:purchase' %}" method="post">
+                    {% csrf_token %}
+                    <button style="margin: 0px 12px 15px 15px;" id="#" type="submit"
+                            class="btn btn-primary">
+                        구매하기
+                    </button>
+                </form>
             </div>
-            <div class="container">
+            <div style="margin-bottom: 50px" class="container">
                 <div class="row" style="margin-top: 30px">
-                {% if likes %}
-                    {% for like in likes %}
+                {% if emoticons %}
+                    {% for emoticon in emoticons %}
                     <div class="col-sm-4 ms-4">
                         <div class="card" style="width: 13rem;">
-                            <img src="..." class="card-img-top" alt="...">
+                            <img src="{{ emoticon.img }}" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">{{ like.title }}</h5>
+                                <h6 class="card-title">{{ emoticon.title }}</h6>
                                 <p class="card-text"></p>
-                                <a href="#" class="btn btn-primary">상세보기</a>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
                 {% else %}
                     <div class="col-md-auto" style="text-align: center">
-                    <h5>구매내역이 없습니다.</h5>
+                    <h5>좋아요를 눌러보세요!</h5>
                     </div>
                 {% endif %}
                 </div>
             </div>
-            <div style="margin-top: 30px">
+            <div style="margin: 30px 0">
                 <button id="quit_btn" type="button" class="btn btn-secondary">회원탈퇴</button>
             </div>
         </div>
@@ -118,7 +123,6 @@
                     정녕 회원탈퇴 하시겠습니까?
                 </div>
                 <div style="margin-top: 20px">
-                    왜이러지
                     <form action="{% url 'user:quitmember' %}" method="post">
                         {% csrf_token %}
                         <button style="margin: 0 15px; width: 70px" id="quit_yes_btn" type="submit"

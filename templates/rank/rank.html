@@ -1,0 +1,564 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<script>
+  function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+  $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+      }
+  });
+</script>
+    <script type="text/javascript">
+        var qservice = "where service = 'kakao' or service = 'line' ";
+
+        var service_all = true;
+        var service_1 = true;
+        var service_2 = true;
+
+        window.onload = function()
+        {
+            let data = ""
+            $.ajax({
+                type:'POST',
+                url:'/rank/data2/',
+                data:JSON.stringify(data),
+
+                    success:function(data){
+                        let result = JSON.parse(data);
+                        //const obj = JSON.parse(data);
+
+                        //$('#showdata').html(obj)
+                        //$('#showdata').html(data)
+                        var count = 0;
+                        $.each(result, function(index, value) { // 데이터 =item
+
+                            $("#showdata").append('<div id = sdata><table class = "tb">' +
+                                        '<tr> <td rowspan = 3 class = "tdid">' +
+                                        '<span class="txt_num num_highlight">' +
+                                        value.id +
+                                        '</span>' + '</td>' +
+                                        '<td class = "tdtitle">' +
+                                        '<span class="txt_tit">' +
+                                        value.title + '</span>' +
+                                        '</td>' +
+                                        '<td rowspan = 3>' +
+                                        '<a class="link_double double_img">' +
+                                        '<div class="area_doubleemoticon">' +
+                                        '<img src="' +
+                                        value.img +
+                                        '" class="img_emot img_default" width = 150 height = 150>' +
+                                        '</div>' +
+                                        '</a>' +
+                                        '</td>' +
+                                        '</tr>' +
+                                        '<tr>' +
+                                        '<td>' +
+                                        '<span class="txt_author">' +
+                                        value.artist +'</span>' +
+                                        '</td>' +
+                                        '</tr>' +
+                                        '<tr>' +
+                                        '<td>' +
+                                        '<span class="txt_tit">' +
+                                        '<button id="swapHeart" class="btn btn-default swap">' +
+                                        '<span class="glyphicon glyphicon-heart-empty"></span>' +
+                                        '</button></span>' +
+                                        '</td>' +
+                                        '</tr></table></div>');
+                            count++;
+				        });
+
+                    },
+                    error : function(xhr,errmsg,err) {
+                    console.log(xhr.status + ": " + xhr.responseText);
+                    }
+            });
+        }
+
+        $(document).ready(function() {
+            $("#orderby_1").click(function () {
+                $("div").remove("#sdata");
+
+                let data = qservice + "order by likes"
+                $.ajax({
+                    type: 'POST',
+                    url: '/rank/data2/',
+                    data: JSON.stringify(data),
+
+                    success: function (data) {
+                        let result = JSON.parse(data);
+                        //const obj = JSON.parse(data);
+
+                        //$('#showdata').html(obj)
+                        //$('#showdata').html(data)
+                        var count = 0;
+                        $.each(result, function (index, value) { // 데이터 =item
+
+                            $("#showdata").append('<div id = sdata><table class = "tb">' +
+                                '<tr> <td rowspan = 3 class = "tdid">' +
+                                '<span class="txt_num num_highlight">' +
+                                value.id +
+                                '</span>' + '</td>' +
+                                '<td class = "tdtitle">' +
+                                '<span class="txt_tit">' +
+                                value.title + '</span>' +
+                                '</td>' +
+                                '<td rowspan = 3>' +
+                                '<a class="link_double double_img">' +
+                                '<div class="area_doubleemoticon">' +
+                                '<img src="' +
+                                value.img +
+                                '" class="img_emot img_default" width = 150 height = 150>' +
+                                '</div>' +
+                                '</a>' +
+                                '</td>' +
+                                '</tr>' +
+                                '<tr>' +
+                                '<td>' +
+                                '<span class="txt_author">' +
+                                value.artist + '</span>' +
+                                '</td>' +
+                                '</tr>' +
+                                '<tr>' +
+                                '<td>' +
+                                '<span class="txt_tit">' +
+                                '<button id="swapHeart" class="btn btn-default swap">' +
+                                '<span class="glyphicon glyphicon-heart-empty"></span>' +
+                                '</button></span>' +
+                                '</td>' +
+                                '</tr></table></div>');
+                            count++;
+                        });
+
+                    },
+                    error: function (xhr, errmsg, err) {
+                        console.log(xhr.status + ": " + xhr.responseText);
+                    }
+                });
+
+            });
+        });
+        $(document).ready(function() {
+            $("#orderby_2").click(function(){
+                $("div").remove("#sdata");
+
+                let data = qservice + "order by title"
+                $.ajax({
+                    type:'POST',
+                    url:'/rank/data2/',
+                    data:JSON.stringify(data),
+
+                        success:function(data){
+                            let result = JSON.parse(data);
+                            //const obj = JSON.parse(data);
+
+                            //$('#showdata').html(obj)
+                            //$('#showdata').html(data)
+                            var count = 0;
+                            $.each(result, function(index, value) { // 데이터 =item
+
+                                $("#showdata").append('<div id = sdata><table class = "tb">' +
+                                            '<tr> <td rowspan = 3 class = "tdid">' +
+                                            '<span class="txt_num num_highlight">' +
+                                            value.id +
+                                            '</span>' + '</td>' +
+                                            '<td class = "tdtitle">' +
+                                            '<span class="txt_tit">' +
+                                            value.title + '</span>' +
+                                            '</td>' +
+                                            '<td rowspan = 3>' +
+                                            '<a class="link_double double_img">' +
+                                            '<div class="area_doubleemoticon">' +
+                                            '<img src="' +
+                                            value.img +
+                                            '" class="img_emot img_default" width = 150 height = 150>' +
+                                            '</div>' +
+                                            '</a>' +
+                                            '</td>' +
+                                            '</tr>' +
+                                            '<tr>' +
+                                            '<td>' +
+                                            '<span class="txt_author">' +
+                                            value.artist +'</span>' +
+                                            '</td>' +
+                                            '</tr>' +
+                                            '<tr>' +
+                                            '<td>' +
+                                            '<span class="txt_tit">' +
+                                            '<button id="swapHeart" class="btn btn-default swap">' +
+                                            '<span class="glyphicon glyphicon-heart-empty"></span>' +
+                                            '</button></span>' +
+                                            '</td>' +
+                                            '</tr></table></div>');
+                                count++;
+                            });
+
+                        },
+                        error : function(xhr,errmsg,err) {
+                        console.log(xhr.status + ": " + xhr.responseText);
+                        }
+                });
+
+            });
+        });
+
+        $(document).ready(function() {
+            $("#orderby_3").click(function(){
+                $("div").remove("#sdata");
+
+                let data = qservice + "order by sell"
+                $.ajax({
+                    type:'POST',
+                    url:'/rank/data2/',
+                    data:JSON.stringify(data),
+
+                        success:function(data){
+                            let result = JSON.parse(data);
+                            //const obj = JSON.parse(data);
+
+                            //$('#showdata').html(obj)
+                            //$('#showdata').html(data)
+                            var count = 0;
+                            $.each(result, function(index, value) { // 데이터 =item
+
+                                $("#showdata").append('<div id = sdata><table class = "tb">' +
+                                            '<tr> <td rowspan = 3 class = "tdid">' +
+                                            '<span class="txt_num num_highlight">' +
+                                            value.id +
+                                            '</span>' + '</td>' +
+                                            '<td class = "tdtitle">' +
+                                            '<span class="txt_tit">' +
+                                            value.title + '</span>' +
+                                            '</td>' +
+                                            '<td rowspan = 3>' +
+                                            '<a class="link_double double_img">' +
+                                            '<div class="area_doubleemoticon">' +
+                                            '<img src="' +
+                                            value.img +
+                                            '" class="img_emot img_default" width = 150 height = 150>' +
+                                            '</div>' +
+                                            '</a>' +
+                                            '</td>' +
+                                            '</tr>' +
+                                            '<tr>' +
+                                            '<td>' +
+                                            '<span class="txt_author">' +
+                                            value.artist +'</span>' +
+                                            '</td>' +
+                                            '</tr>' +
+                                            '<tr>' +
+                                            '<td>' +
+                                            '<span class="txt_tit">' +
+                                            '<button id="swapHeart" class="btn btn-default swap">' +
+                                            '<span class="glyphicon glyphicon-heart-empty"></span>' +
+                                            '</button></span>' +
+                                            '</td>' +
+                                            '</tr></table></div>');
+                                count++;
+                            });
+
+                        },
+                        error : function(xhr,errmsg,err) {
+                        console.log(xhr.status + ": " + xhr.responseText);
+                        }
+                });
+
+            });
+        });
+
+        function check_service(checked)
+        {
+            service_all = document.getElementById("check_all").checked;
+            service_1 = document.getElementById("check_line").checked;
+            service_2 = document.getElementById("check_kakao").checked;
+
+            if (service_all == true && service_1 == true && service_2 == true) {
+                qservice = "where service = 'kakao' or service = 'line' ";
+
+                $("input:checkbox[id='check_all']").prop("checked", true);
+                $("input:checkbox[id='check_line']").prop("checked", true);
+                $("input:checkbox[id='check_kakao']").prop("checked", true);
+            }
+
+            else if (service_all == true && service_1 == true && service_2 == false)
+            {
+                qservice = "where service = 'line' ";
+                $("input:checkbox[id='check_all']").prop("checked", false);
+                $("input:checkbox[id='check_line']").prop("checked", true);
+                $("input:checkbox[id='check_kakao']").prop("checked", false);
+            }
+            else if (service_all == true && service_1 == false && service_2 == true)
+            {
+                qservice = "where service = 'kakao' ";
+                $("input:checkbox[id='check_all']").prop("checked", false);
+                $("input:checkbox[id='check_line']").prop("checked", false);
+                $("input:checkbox[id='check_kakao']").prop("checked", true);
+
+            }
+            else if (service_all == true && service_1 == false && service_2 == false)
+            {
+                qservice = "where service = 'kakao' or service = 'line' ";
+
+                $("input:checkbox[id='check_all']").prop("checked", true);
+                $("input:checkbox[id='check_line']").prop("checked", true);
+                $("input:checkbox[id='check_kakao']").prop("checked", true);
+
+            }
+            else if (service_all == false && service_1 == true && service_2 == false) {
+               qservice = "where service = 'line' ";
+                $("input:checkbox[id='check_all']").prop("checked", false);
+                $("input:checkbox[id='check_line']").prop("checked", true);
+                $("input:checkbox[id='check_kakao']").prop("checked", false);
+            }
+
+            else if (service_all == false && service_1 == false && service_2 == true)
+            {
+                qservice = "where service = 'kakao' ";
+                $("input:checkbox[id='check_all']").prop("checked", false);
+                $("input:checkbox[id='check_line']").prop("checked", false);
+                $("input:checkbox[id='check_kakao']").prop("checked", true);
+            }
+            else if (service_all == false && service_1 == false && service_2 == false)
+            {
+                qservice = "where service != 'kakao' and service != 'line' ";
+                $("input:checkbox[id='check_all']").prop("checked", false);
+                $("input:checkbox[id='check_line']").prop("checked", false);
+                $("input:checkbox[id='check_kakao']").prop("checked", false);
+            }
+            else if (service_all == false && service_1 == true && service_2 == true)
+            {
+                qservice = "where service != 'kakao' and service != 'line' ";
+                $("input:checkbox[id='check_all']").prop("checked", false);
+                $("input:checkbox[id='check_line']").prop("checked", false);
+                $("input:checkbox[id='check_kakao']").prop("checked", false);
+            }
+
+            data = qservice + "order by likes"
+
+            $("div").remove("#sdata");
+
+            $.ajax({
+                    type:'POST',
+                    url:'/rank/data2/',
+                    data:JSON.stringify(data),
+
+                        success:function(data){
+                            let result = JSON.parse(data);
+                            //const obj = JSON.parse(data);
+
+                            //$('#showdata').html(obj)
+                            //$('#showdata').html(data)
+                            var count = 0;
+                            $.each(result, function(index, value) { // 데이터 =item
+
+                                $("#showdata").append('<div id = sdata><table class = "tb">' +
+                                            '<tr> <td rowspan = 3 class = "tdid">' +
+                                            '<span class="txt_num num_highlight">' +
+                                            value.id +
+                                            '</span>' + '</td>' +
+                                            '<td class = "tdtitle">' +
+                                            '<span class="txt_tit">' +
+                                            value.title + '</span>' +
+                                            '</td>' +
+                                            '<td rowspan = 3>' +
+                                            '<a class="link_double double_img">' +
+                                            '<div class="area_doubleemoticon">' +
+                                            '<img src="' +
+                                            value.img +
+                                            '" class="img_emot img_default" width = 150 height = 150>' +
+                                            '</div>' +
+                                            '</a>' +
+                                            '</td>' +
+                                            '</tr>' +
+                                            '<tr>' +
+                                            '<td>' +
+                                            '<span class="txt_author">' +
+                                            value.artist +'</span>' +
+                                            '</td>' +
+                                            '</tr>' +
+                                            '<tr>' +
+                                            '<td>' +
+                                            '<span class="txt_tit">' +
+                                            '<button id="swapHeart" class="btn btn-default swap">' +
+                                            '<span class="glyphicon glyphicon-heart-empty"></span>' +
+                                            '</button></span>' +
+                                            '</td>' +
+                                            '</tr></table></div>');
+                                count++;
+                            });
+
+                        },
+                        error : function(xhr,errmsg,err) {
+                        console.log(xhr.status + ": " + xhr.responseText);
+                        }
+                });
+        }
+
+        function check_gender(selectAll)  {
+            const checkboxes = document.getElementsByName('check_gender');
+
+            var check_genderall = true;
+            var check_gendermale = document.getElementById('check_gender2');
+            var check_genderfemale = document.getElementById('check_gender3');
+
+
+            check_genderall = document.getElementById('check_gender1');
+
+            alert(selectAll + " / " + check_genderall + " / " + check_gendermale + " / " + check_genderfemale)
+
+
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = selectAll.checked;
+          })
+        }
+
+</script>
+
+
+
+
+
+
+
+
+
+<div style="display: flex; flex-direction: column; align-items: center; width: 100%" id="base_area">
+    <div style="text-align: center; height:400px">
+        <!-- 아래 스타일 수정하면 전체 페이지 크기 조절됨-->
+        <div id="page_area">
+            <!-- 아래 스타일 수정하면 체크박스 크기 조절됨, height: auto-->
+            <div id="table_area" >
+                <div style="display: flex; flex-direction: row; margin: 20px 0">
+                    <div style="font-size: 15px; width: 70px; border-right: solid 1px gray">
+                        <b>기업별</b>
+                    </div>
+                    <div style="padding-left: 20px; text-align: left">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name = "check_service_all" id="check_all" value="all"
+                                   onchange="check_service(this)" checked>
+                            <label class="form-check-label" for="inlineCheckbox1">전체</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name = "check_service" id="check_line" value="line"
+                                   onchange="check_service(this)" checked>
+                            <label class="form-check-label" for="inlineCheckbox1">라인</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name = "check_service" id="check_kakao" value="kakao"
+                                   onchange="check_service(this)" checked>
+                            <label class="form-check-label" for="inlineCheckbox2">카카오</label>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row; margin: 20px 0">
+                    <div style="font-size: 15px; width: 70px; border-right: solid 1px gray">
+                        <b>세대별</b>
+                    </div>
+                    <div style="margin-left: 20px">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate0" value="generate_all" checked>
+                        <label class="form-check-label" for="check_generate0">전체</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate1" value="generate_10" checked>
+                        <label class="form-check-label" for="check_generate1">10대</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate2" value="generate_20" checked>
+                        <label class="form-check-label" for="check_generate2">20대</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate3" value="generate_30" checked>
+                        <label class="form-check-label" for="check_generate3">30대</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="check_generate4" value="generate_40" checked>
+                        <label class="form-check-label" for="check_generate4">40대</label>
+                    </div>
+                </div>
+                </div>
+                <div style="display: flex; flex-direction: row; margin: 20px 0">
+                    <div style="font-size: 15px; width: 70px; border-right: solid 1px gray">
+                        <b>성별</b>
+                    </div>
+                    <div style="padding-left: 20px; justify-content: space-between;">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name = "check_gender" type="checkbox" id="check_gender1" value="gender_all" onchange="check_gender(this)" checked>
+                            <label class="form-check-label" for="check_gender1">전체</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name = "check_gender" type="checkbox" id="check_gender2" value="gender_male" onchange="check_gender(this)" checked>
+                            <label class="form-check-label" for="check_gender2">남성</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name = "check_gender" type="checkbox" id="check_gender3" value="gender_female" onchange="check_gender(this)" checked>
+                            <label class="form-check-label" for="check_gender3">여성</label>
+                        </div>
+                    </div>
+                    <div style="margin-left: 240px">
+                </div>
+
+            </div>
+        </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between">
+                <div style="width: 105px;">
+
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <button class="range_data" id="orderby_1">인기순</button>
+                        <button class="range_data" id="orderby_2">신규순</button>
+                        <button class="range_data" id="orderby_3">구매순</button>
+                </div>
+                <div style="margin-right: 69px; margin-left: 10px">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div id="showdata">
+        </div>
+
+</div>
+
+
+
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+-->
+
+
+
+{% endblock %}

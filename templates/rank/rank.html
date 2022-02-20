@@ -52,20 +52,31 @@
 
                         //$('#showdata').html(obj)
                         //$('#showdata').html(data)
-                        var count = 0;
+                        var count = 1;
+                        var str = ""
                         $.each(result, function(index, value) { // 데이터 =item
 
-                            $("#showdata").append('<div id = sdata><table class = "tb">' +
-                                        '<tr> <td rowspan = 3 class = "tdid">' +
-                                        '<span class="txt_num num_highlight">' +
-                                        value.id +
-                                        '</span>' + '</td>' +
+                            str = '<div id = sdata><table class = "tb">' +
+                                            '<tr> <td rowspan = 3 class = "tdid">' +
+                                            '<span class = "txt_num num_highlight"';
+
+
+                            if (count <= 3){
+                                str = str + ' style = "font-size: 1.5em; color: red;"><b>' + count + '</b>'
+                            }
+                            else {
+                                str = str + '>' + count;
+                            };
+
+
+                            str = str + '</span>' + '</td>' +
                                         '<td class = "tdtitle">' +
-                                        '<span class="txt_tit">' +
-                                        value.title + '</span>' +
+                                        '<a href= "/rank/detail">' +
+                                        '<span class="txt_tit" >' +
+                                        value.title + '</span></a>' +
                                         '</td>' +
                                         '<td rowspan = 3>' +
-                                        '<a class="link_double double_img">' +
+                                        '<a class="link_double double_img" href= "/rank/detail">' +
                                         '<div class="area_doubleemoticon">' +
                                         '<img src="' +
                                         value.img +
@@ -87,8 +98,10 @@
                                         '<span class="glyphicon glyphicon-heart-empty"></span>' +
                                         '</button></span>' +
                                         '</td>' +
-                                        '</tr></table></div>');
-                            count++;
+                                        '</tr></table></div>';
+
+                                $("#showdata").append(str);
+                                count++;
 				        });
 
                     },
@@ -114,43 +127,56 @@
 
                         //$('#showdata').html(obj)
                         //$('#showdata').html(data)
-                        var count = 0;
-                        $.each(result, function (index, value) { // 데이터 =item
+                        var count = 1;
+                        var str = ""
+                        $.each(result, function(index, value) { // 데이터 =item
 
-                            $("#showdata").append('<div id = sdata><table class = "tb">' +
-                                '<tr> <td rowspan = 3 class = "tdid">' +
-                                '<span class="txt_num num_highlight">' +
-                                value.id +
-                                '</span>' + '</td>' +
-                                '<td class = "tdtitle">' +
-                                '<span class="txt_tit">' +
-                                value.title + '</span>' +
-                                '</td>' +
-                                '<td rowspan = 3>' +
-                                '<a class="link_double double_img">' +
-                                '<div class="area_doubleemoticon">' +
-                                '<img src="' +
-                                value.img +
-                                '" class="img_emot img_default" width = 150 height = 150>' +
-                                '</div>' +
-                                '</a>' +
-                                '</td>' +
-                                '</tr>' +
-                                '<tr>' +
-                                '<td>' +
-                                '<span class="txt_author">' +
-                                value.artist + '</span>' +
-                                '</td>' +
-                                '</tr>' +
-                                '<tr>' +
-                                '<td>' +
-                                '<span class="txt_tit">' +
-                                '<button id="swapHeart" class="btn btn-default swap">' +
-                                '<span class="glyphicon glyphicon-heart-empty"></span>' +
-                                '</button></span>' +
-                                '</td>' +
-                                '</tr></table></div>');
-                            count++;
+                            str = '<div id = sdata><table class = "tb">' +
+                                            '<tr> <td rowspan = 3 class = "tdid">' +
+                                            '<span class = "txt_num num_highlight"';
+
+
+                            if (count <= 3){
+                                str = str + ' style = "font-size: 1.5em; color: red;"><b>' + count + '</b>'
+                            }
+                            else {
+                                str = str + '>' + count;
+                            };
+
+
+                            str = str + '</span>' + '</td>' +
+                                        '<td class = "tdtitle">' +
+                                        '<a href= "/rank/detail">' +
+                                        '<span class="txt_tit" >' +
+                                        value.title + '</span></a>' +
+                                        '</td>' +
+                                        '<td rowspan = 3>' +
+                                        '<a class="link_double double_img" href= "/rank/detail">' +
+                                        '<div class="area_doubleemoticon">' +
+                                        '<img src="' +
+                                        value.img +
+                                        '" class="img_emot img_default" width = 150 height = 150>' +
+                                        '</div>' +
+                                        '</a>' +
+                                        '</td>' +
+                                        '</tr>' +
+                                        '<tr>' +
+                                        '<td>' +
+                                        '<span class="txt_author">' +
+                                        value.artist +'</span>' +
+                                        '</td>' +
+                                        '</tr>' +
+                                        '<tr>' +
+                                        '<td>' +
+                                        '<span class="txt_tit">' +
+                                        '<button id="swapHeart" class="btn btn-default swap">' +
+                                        '<span class="glyphicon glyphicon-heart-empty"></span>' +
+                                        '</button></span>' +
+                                        '</td>' +
+                                        '</tr></table></div>';
+
+                                $("#showdata").append(str);
+                                count++;
                         });
 
                     },
@@ -177,42 +203,55 @@
 
                             //$('#showdata').html(obj)
                             //$('#showdata').html(data)
-                            var count = 0;
-                            $.each(result, function(index, value) { // 데이터 =item
+                            var count = 1;
+                        var str = ""
+                        $.each(result, function(index, value) { // 데이터 =item
 
-                                $("#showdata").append('<div id = sdata><table class = "tb">' +
+                            str = '<div id = sdata><table class = "tb">' +
                                             '<tr> <td rowspan = 3 class = "tdid">' +
-                                            '<span class="txt_num num_highlight">' +
-                                            value.id +
-                                            '</span>' + '</td>' +
-                                            '<td class = "tdtitle">' +
-                                            '<span class="txt_tit">' +
-                                            value.title + '</span>' +
-                                            '</td>' +
-                                            '<td rowspan = 3>' +
-                                            '<a class="link_double double_img">' +
-                                            '<div class="area_doubleemoticon">' +
-                                            '<img src="' +
-                                            value.img +
-                                            '" class="img_emot img_default" width = 150 height = 150>' +
-                                            '</div>' +
-                                            '</a>' +
-                                            '</td>' +
-                                            '</tr>' +
-                                            '<tr>' +
-                                            '<td>' +
-                                            '<span class="txt_author">' +
-                                            value.artist +'</span>' +
-                                            '</td>' +
-                                            '</tr>' +
-                                            '<tr>' +
-                                            '<td>' +
-                                            '<span class="txt_tit">' +
-                                            '<button id="swapHeart" class="btn btn-default swap">' +
-                                            '<span class="glyphicon glyphicon-heart-empty"></span>' +
-                                            '</button></span>' +
-                                            '</td>' +
-                                            '</tr></table></div>');
+                                            '<span class = "txt_num num_highlight"';
+
+
+                            if (count <= 3){
+                                str = str + ' style = "font-size: 1.5em; color: red;"><b>' + count + '</b>'
+                            }
+                            else {
+                                str = str + '>' + count;
+                            };
+
+
+                            str = str + '</span>' + '</td>' +
+                                        '<td class = "tdtitle">' +
+                                        '<a href= "/rank/detail">' +
+                                        '<span class="txt_tit" >' +
+                                        value.title + '</span></a>' +
+                                        '</td>' +
+                                        '<td rowspan = 3>' +
+                                        '<a class="link_double double_img" href= "/rank/detail">' +
+                                        '<div class="area_doubleemoticon">' +
+                                        '<img src="' +
+                                        value.img +
+                                        '" class="img_emot img_default" width = 150 height = 150>' +
+                                        '</div>' +
+                                        '</a>' +
+                                        '</td>' +
+                                        '</tr>' +
+                                        '<tr>' +
+                                        '<td>' +
+                                        '<span class="txt_author">' +
+                                        value.artist +'</span>' +
+                                        '</td>' +
+                                        '</tr>' +
+                                        '<tr>' +
+                                        '<td>' +
+                                        '<span class="txt_tit">' +
+                                        '<button id="swapHeart" class="btn btn-default swap">' +
+                                        '<span class="glyphicon glyphicon-heart-empty"></span>' +
+                                        '</button></span>' +
+                                        '</td>' +
+                                        '</tr></table></div>';
+
+                                $("#showdata").append(str);
                                 count++;
                             });
 
@@ -241,42 +280,55 @@
 
                             //$('#showdata').html(obj)
                             //$('#showdata').html(data)
-                            var count = 0;
-                            $.each(result, function(index, value) { // 데이터 =item
+                            var count = 1;
+                        var str = ""
+                        $.each(result, function(index, value) { // 데이터 =item
 
-                                $("#showdata").append('<div id = sdata><table class = "tb">' +
+                            str = '<div id = sdata><table class = "tb">' +
                                             '<tr> <td rowspan = 3 class = "tdid">' +
-                                            '<span class="txt_num num_highlight">' +
-                                            value.id +
-                                            '</span>' + '</td>' +
-                                            '<td class = "tdtitle">' +
-                                            '<span class="txt_tit">' +
-                                            value.title + '</span>' +
-                                            '</td>' +
-                                            '<td rowspan = 3>' +
-                                            '<a class="link_double double_img">' +
-                                            '<div class="area_doubleemoticon">' +
-                                            '<img src="' +
-                                            value.img +
-                                            '" class="img_emot img_default" width = 150 height = 150>' +
-                                            '</div>' +
-                                            '</a>' +
-                                            '</td>' +
-                                            '</tr>' +
-                                            '<tr>' +
-                                            '<td>' +
-                                            '<span class="txt_author">' +
-                                            value.artist +'</span>' +
-                                            '</td>' +
-                                            '</tr>' +
-                                            '<tr>' +
-                                            '<td>' +
-                                            '<span class="txt_tit">' +
-                                            '<button id="swapHeart" class="btn btn-default swap">' +
-                                            '<span class="glyphicon glyphicon-heart-empty"></span>' +
-                                            '</button></span>' +
-                                            '</td>' +
-                                            '</tr></table></div>');
+                                            '<span class = "txt_num num_highlight"';
+
+
+                            if (count <= 3){
+                                str = str + ' style = "font-size: 1.5em; color: red;"><b>' + count + '</b>'
+                            }
+                            else {
+                                str = str + '>' + count;
+                            };
+
+
+                            str = str + '</span>' + '</td>' +
+                                        '<td class = "tdtitle">' +
+                                        '<a href= "/rank/detail">' +
+                                        '<span class="txt_tit" >' +
+                                        value.title + '</span></a>' +
+                                        '</td>' +
+                                        '<td rowspan = 3>' +
+                                        '<a class="link_double double_img" href= "/rank/detail">' +
+                                        '<div class="area_doubleemoticon">' +
+                                        '<img src="' +
+                                        value.img +
+                                        '" class="img_emot img_default" width = 150 height = 150>' +
+                                        '</div>' +
+                                        '</a>' +
+                                        '</td>' +
+                                        '</tr>' +
+                                        '<tr>' +
+                                        '<td>' +
+                                        '<span class="txt_author">' +
+                                        value.artist +'</span>' +
+                                        '</td>' +
+                                        '</tr>' +
+                                        '<tr>' +
+                                        '<td>' +
+                                        '<span class="txt_tit">' +
+                                        '<button id="swapHeart" class="btn btn-default swap">' +
+                                        '<span class="glyphicon glyphicon-heart-empty"></span>' +
+                                        '</button></span>' +
+                                        '</td>' +
+                                        '</tr></table></div>';
+
+                                $("#showdata").append(str);
                                 count++;
                             });
 
@@ -371,42 +423,55 @@
 
                             //$('#showdata').html(obj)
                             //$('#showdata').html(data)
-                            var count = 0;
-                            $.each(result, function(index, value) { // 데이터 =item
+                            var count = 1;
+                        var str = ""
+                        $.each(result, function(index, value) { // 데이터 =item
 
-                                $("#showdata").append('<div id = sdata><table class = "tb">' +
+                            str = '<div id = sdata><table class = "tb">' +
                                             '<tr> <td rowspan = 3 class = "tdid">' +
-                                            '<span class="txt_num num_highlight">' +
-                                            value.id +
-                                            '</span>' + '</td>' +
-                                            '<td class = "tdtitle">' +
-                                            '<span class="txt_tit">' +
-                                            value.title + '</span>' +
-                                            '</td>' +
-                                            '<td rowspan = 3>' +
-                                            '<a class="link_double double_img">' +
-                                            '<div class="area_doubleemoticon">' +
-                                            '<img src="' +
-                                            value.img +
-                                            '" class="img_emot img_default" width = 150 height = 150>' +
-                                            '</div>' +
-                                            '</a>' +
-                                            '</td>' +
-                                            '</tr>' +
-                                            '<tr>' +
-                                            '<td>' +
-                                            '<span class="txt_author">' +
-                                            value.artist +'</span>' +
-                                            '</td>' +
-                                            '</tr>' +
-                                            '<tr>' +
-                                            '<td>' +
-                                            '<span class="txt_tit">' +
-                                            '<button id="swapHeart" class="btn btn-default swap">' +
-                                            '<span class="glyphicon glyphicon-heart-empty"></span>' +
-                                            '</button></span>' +
-                                            '</td>' +
-                                            '</tr></table></div>');
+                                            '<span class = "txt_num num_highlight"';
+
+
+                            if (count <= 3){
+                                str = str + ' style = "color: red;"><b>' + count + '</b>'
+                            }
+                            else {
+                                str = str + '>' + count;
+                            };
+
+
+                            str = str + '</span>' + '</td>' +
+                                        '<td class = "tdtitle">' +
+                                        '<a href= "/rank/detail">' +
+                                        '<span class="txt_tit" >' +
+                                        value.title + '</span></a>' +
+                                        '</td>' +
+                                        '<td rowspan = 3>' +
+                                        '<a class="link_double double_img" href= "/rank/detail">' +
+                                        '<div class="area_doubleemoticon">' +
+                                        '<img src="' +
+                                        value.img +
+                                        '" class="img_emot img_default" width = 150 height = 150>' +
+                                        '</div>' +
+                                        '</a>' +
+                                        '</td>' +
+                                        '</tr>' +
+                                        '<tr>' +
+                                        '<td>' +
+                                        '<span class="txt_author">' +
+                                        value.artist +'</span>' +
+                                        '</td>' +
+                                        '</tr>' +
+                                        '<tr>' +
+                                        '<td>' +
+                                        '<span class="txt_tit">' +
+                                        '<button id="swapHeart" class="btn btn-default swap">' +
+                                        '<span class="glyphicon glyphicon-heart-empty"></span>' +
+                                        '</button></span>' +
+                                        '</td>' +
+                                        '</tr></table></div>';
+
+                                $("#showdata").append(str);
                                 count++;
                             });
 
@@ -436,14 +501,6 @@
         }
 
 </script>
-
-
-
-
-
-
-
-
 
 <div style="display: flex; flex-direction: column; align-items: center; width: 100%" id="base_area">
     <div style="text-align: center; height:400px">

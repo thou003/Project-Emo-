@@ -1,4 +1,7 @@
+<!doctype html>
+{% load static %}
 <html>
+
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -111,10 +114,10 @@
                 left: 0%;
             }
             50% {
-                left: 100%;
+                left: 100;
             }
             99% {
-                left: 100%;
+                left: 100;
             }
             100% {
                 left: 0%;
@@ -176,14 +179,14 @@
         <li class="slideitem">
             <a>
                 <label for="slide02" class="prev"></label>
-                <img src="clicksale99.png">
+                <img src="{% static 'new1.png' %}">
                 <label for="slide02" class="next"></label>
             </a>
         </li>
         <li class="slideitem">
             <a>
                 <label for="slide01" class="prev"></label>
-                <img src="salee.png">
+                <img src="{% static 'new2.png' %}">
                 <label for="slide01" class="next"></label>
             </a>
         </li>

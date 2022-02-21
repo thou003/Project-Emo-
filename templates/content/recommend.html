@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
 <head>
     <style>
@@ -837,14 +838,14 @@
         <li class="slideitem">
             <a>
                 <label for="slide02" class="prev"></label>
-                <img src="come.png">
+                <img src="{% static 'recommend1.png' %}">
                 <label for="slide02" class="next"></label>
             </a>
         </li>
         <li class="slideitem">
             <a>
                 <label for="slide01" class="prev"></label>
-                <img src="select.png">
+                <img src="{% static 'recommend2.png' %}">
                 <label for="slide01" class="next"></label>
             </a>
         </li>

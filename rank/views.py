@@ -52,6 +52,9 @@ class Rank(APIView):
     def get(self, request):
         return render(request, "rank/rank.html")
 
+class Detail(APIView):
+    def get(self, request):
+        return render(request, "rank/detail.html")
 
 # Create your views here.
 def index(request):

@@ -1,4 +1,4 @@
-from .views import Rank, Data2
+from .views import Rank, Data2, Detail
 from django.urls import path
 from . import views
 
@@ -8,5 +8,5 @@ urlpatterns = [
 
     path('rank/', Rank.as_view()),
     path('data2/', views.Data2, name='data2'),
-
+    path('detail/', Detail.as_view()),
 ]
